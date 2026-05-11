@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.astro';
@@ -67,59 +66,87 @@ const testimonials = [
 >
 
   <!-- ── Hero ───────────────────────────────────────────── -->
-  <section class="relative bg-navy overflow-hidden">
-    <!-- Drum ring decoration -->
-    <div class="absolute inset-0 pointer-events-none flex items-center justify-end" aria-hidden="true">
-      <svg class="opacity-[0.15] w-[650px] h-[650px] -mr-32 shrink-0" viewBox="0 0 650 650" fill="none">
-        <circle cx="325" cy="325" r="318" stroke="#7B9E87" stroke-width="2"/>
-        <circle cx="325" cy="325" r="264" stroke="#7B9E87" stroke-width="1.5"/>
-        <circle cx="325" cy="325" r="210" stroke="#C4933F" stroke-width="1.5"/>
-        <circle cx="325" cy="325" r="156" stroke="#7B9E87" stroke-width="1.5"/>
-        <circle cx="325" cy="325" r="102" stroke="#C4933F" stroke-width="2"/>
-        <circle cx="325" cy="325" r="48"  stroke="#7B9E87" stroke-width="1.5"/>
-        <circle cx="325" cy="325" r="16"  fill="#C4933F" opacity="0.7"/>
-      </svg>
+  <section class="hero">
+
+    <div class="hero-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="hero-split">
+
+        <!-- Text column -->
+        <div class="hero-text">
+
+          <!-- 1. Byline -->
+          <p class="byline">Julian &ldquo;Chewy&rdquo; &middot; Auckland&rsquo;s North Shore</p>
+
+          <!-- 2. Display heading -->
+          <h1 class="display-heading">
+            Rhythm<br>
+            <em class="display-accent">for everyone</em>
+          </h1>
+
+          <!-- 3. Sub-heading -->
+          <p class="sub-head">
+            Drumming workshops, music therapy &amp; live entertainment —
+            bringing communities together through the universal language of rhythm.
+          </p>
+
+          <!-- 4. CTAs -->
+          <div class="ctas">
+            <a href="/drumbeat" class="cta-fill">
+              Explore Programmes
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="/contact" class="cta-outline">Get in Touch</a>
+          </div>
+
+        </div>
+
+        <!-- Drum ring column -->
+        <div class="ring-col" aria-hidden="true">
+          <svg class="drum-ring" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer rim — the structural frame -->
+            <circle cx="300" cy="300" r="284" stroke="#C4933F" stroke-width="10"/>
+            <!-- Tension hardware zone -->
+            <circle cx="300" cy="300" r="264" stroke="#FAF7F0" stroke-width="1" stroke-opacity="0.18"/>
+            <!-- Bearing edge -->
+            <circle cx="300" cy="300" r="246" stroke="#FAF7F0" stroke-width="2" stroke-opacity="0.45"/>
+            <!-- Drum head outer zone -->
+            <circle cx="300" cy="300" r="218" stroke="#7B9E87" stroke-width="1.5" stroke-opacity="0.75"/>
+            <!-- Mid ring -->
+            <circle cx="300" cy="300" r="178" stroke="#FAF7F0" stroke-width="1" stroke-opacity="0.15"/>
+            <!-- Inner accent ring (gold) -->
+            <circle cx="300" cy="300" r="135" stroke="#C4933F" stroke-width="2.5"/>
+            <!-- Centre zone ring -->
+            <circle cx="300" cy="300" r="88" stroke="#FAF7F0" stroke-width="1" stroke-opacity="0.2"/>
+            <!-- Centre sweet spot -->
+            <circle cx="300" cy="300" r="28" fill="#C4933F" fill-opacity="0.8"/>
+            <circle cx="300" cy="300" r="12" fill="#C4933F"/>
+            <!-- 10 tension lugs evenly spaced around the rim (r=265 from centre) -->
+            <circle cx="300"   cy="35"   r="8" fill="#C4933F"/>
+            <circle cx="455.8" cy="85.6" r="8" fill="#C4933F"/>
+            <circle cx="552"   cy="218.1" r="8" fill="#C4933F"/>
+            <circle cx="552"   cy="381.9" r="8" fill="#C4933F"/>
+            <circle cx="455.8" cy="514.4" r="8" fill="#C4933F"/>
+            <circle cx="300"   cy="565"  r="8" fill="#C4933F"/>
+            <circle cx="144.2" cy="514.4" r="8" fill="#C4933F"/>
+            <circle cx="48"    cy="381.9" r="8" fill="#C4933F"/>
+            <circle cx="48"    cy="218.1" r="8" fill="#C4933F"/>
+            <circle cx="144.2" cy="85.6" r="8" fill="#C4933F"/>
+          </svg>
+        </div>
+
+      </div>
     </div>
 
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-28 pb-14 lg:pb-20">
-
-      <!-- Centred text block -->
-      <div class="text-center mb-10 lg:mb-14">
-        <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-5">
-          Auckland's North Shore, New Zealand
-        </p>
-        <h1 class="font-heading text-5xl lg:text-6xl xl:text-7xl font-semibold text-cream leading-tight mb-6">
-          Rhythm<br/>
-          <span class="text-gold italic font-light">for everyone</span>
-        </h1>
-        <p class="text-xl text-cream/70 font-light leading-relaxed mb-4 max-w-xl mx-auto">
-          Drumming workshops, music therapy, and live entertainment — bringing people together through the power of rhythm and sound.
-        </p>
-        <p class="text-base text-cream/50 mb-10 max-w-lg mx-auto">
-          Led by Julian "Chewy", serving schools, rest homes, workplaces, and individuals across Auckland's North Shore.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/drumbeat" class="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-cream rounded-full font-medium text-sm hover:bg-gold-dark transition-colors shadow-sm">
-            Explore Programmes
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a href="/contact" class="inline-flex items-center px-7 py-3.5 rounded-full font-medium text-sm border border-cream/25 text-cream hover:border-cream/50 hover:bg-cream/10 transition-colors">
-            Get in Touch
-          </a>
-        </div>
+    <!-- YouTube embed — full width below the split -->
+    <div class="video-section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+      <div class="video-label-row reveal">
+        <span class="video-divider"></span>
+        <p class="video-label">See us in action</p>
+        <span class="video-divider"></span>
       </div>
-
-      <!-- YouTube embed — full width, below CTAs -->
-      <div class="reveal">
-        <!-- "See us in action" eyebrow -->
-        <div class="flex items-center gap-4 justify-center mb-4">
-          <div class="h-px flex-1 bg-white/10 max-w-20"></div>
-          <p class="text-xs font-medium text-sage-light/70 uppercase tracking-widest">See us in action</p>
-          <div class="h-px flex-1 bg-white/10 max-w-20"></div>
-        </div>
-
+      <div class="reveal reveal-delay-1">
         <YouTubeEmbed
           videoId="dQw4w9WgXcQ"
           title="Rhythm for the Soul — watch a drumming session with Chewy"
@@ -127,6 +154,7 @@ const testimonials = [
         />
       </div>
     </div>
+
   </section>
 
   <!-- ── Audience doors ─────────────────────────────────── -->
@@ -328,3 +356,223 @@ const testimonials = [
   </section>
 
 </BaseLayout>
+
+<style>
+  /* ── Hero section ──────────────────────────────────────── */
+  .hero {
+    position: relative;
+    background-color: #2e3141;
+    overflow: hidden;
+  }
+
+  /* Grain texture via SVG feTurbulence pseudo-element */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    opacity: 0.042;
+    mix-blend-mode: overlay;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Split grid */
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-top: 5.5rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-split {
+      grid-template-columns: 1fr 500px;
+      min-height: 82vh;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  /* Text column */
+  @media (min-width: 1024px) {
+    .hero-text {
+      padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Mobile: centre the text stack */
+  @media (max-width: 1023px) {
+    .hero-text {
+      text-align: center;
+    }
+    .sub-head {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ctas {
+      justify-content: center;
+    }
+  }
+
+  /* 1. Byline */
+  .byline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #C4933F;
+    margin: 0 0 1.75rem 0;
+  }
+
+  /* 2. Display heading */
+  .display-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(76px, 9.5vw, 126px);
+    font-variation-settings: 'opsz' 144, 'wght' 700;
+    line-height: 0.92;
+    color: #FAF7F0;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.875rem 0;
+  }
+
+  .display-accent {
+    display: block;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'wght' 300;
+    color: #C4933F;
+  }
+
+  /* 3. Sub-heading */
+  .sub-head {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(250, 247, 240, 0.65);
+    max-width: 44ch;
+    margin: 0 0 2.75rem 0;
+  }
+
+  /* 4. CTAs */
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .cta-fill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.875rem;
+    background-color: #C4933F;
+    color: #FAF7F0;
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .cta-fill:hover { background-color: #A67A2E; }
+
+  .cta-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.875rem;
+    border: 1.5px solid rgba(250, 247, 240, 0.28);
+    color: #FAF7F0;
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cta-outline:hover {
+    border-color: rgba(250, 247, 240, 0.55);
+    background-color: rgba(250, 247, 240, 0.07);
+  }
+
+  /* Drum ring column */
+  .ring-col {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (min-width: 1024px) {
+    .ring-col {
+      display: flex;
+    }
+  }
+
+  /* Drum ring SVG */
+  .drum-ring {
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .drum-ring {
+      animation: drum-spin 80s linear infinite;
+    }
+  }
+
+  @keyframes drum-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Video section */
+  .video-section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .video-label-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .video-divider {
+    display: block;
+    height: 1px;
+    flex: 1;
+    max-width: 6rem;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .video-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.38);
+    white-space: nowrap;
+    margin: 0;
+  }
+</style>
