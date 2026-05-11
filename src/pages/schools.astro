@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+const benefits = [
+  { title: 'Teamwork & cooperation', description: 'Playing in a drum circle requires listening, following, and leading — skills that carry directly into classroom and playground dynamics.' },
+  { title: 'Cultural awareness', description: 'West African, Latin, Pacific, and Indigenous drumming traditions open windows into global cultures and histories in a living, embodied way.' },
+  { title: 'Creative confidence', description: 'Students who feel unsure in academic contexts often shine in the drum circle — rhythm is a great equaliser of perceived ability.' },
+  { title: 'Listening & focus', description: 'To stay in time with a group, you have to listen. Regular drumming practice builds the kind of focused attention that benefits every subject.' },
+  { title: 'Emotional expression', description: 'Music offers a safe, structured outlet for big feelings — especially useful during transitions, stressful times, or for students who struggle to verbalise emotions.' },
+  { title: 'Curriculum links', description: 'Sessions can be linked to The Arts, Social Sciences, and Health & PE learning areas within the New Zealand Curriculum.' },
+];
+
+const whatToExpect = [
+  { step: '01', title: 'Warm-up & games', description: 'Fun rhythm games to get the group laughing, moving, and synchronised — ice-breakers that also teach listening and responsiveness.' },
+  { step: '02', title: 'Instrument exploration', description: 'Students explore the sounds of djembes, shakers, bells, and other percussion instruments from around the world.' },
+  { step: '03', title: 'Guided group rhythms', description: 'Simple to complex patterns built up layer by layer. Everyone starts at the same place and grows together.' },
+  { step: '04', title: 'Creative improvisation', description: 'Space for individual expression within the group — solos, call-and-response, and collaborative composition.' },
+  { step: '05', title: 'Reflection & celebration', description: 'A brief cool-down where students share what they noticed, felt, and discovered. Every session ends on a high.' },
+];
+---
+
+<BaseLayout
+  title="Schools Drumming Workshops"
+  description="Drumming workshops for primary and intermediate schools on Auckland's North Shore. Curriculum-linked creative arts — building teamwork, listening, and cultural connection."
+>
+
+  <Hero
+    eyebrow="Education programmes"
+    title="Schools drumming workshops"
+    subtitle="Where the curriculum comes alive through the language of rhythm"
+    description="Engaging, curriculum-linked percussion workshops for primary and intermediate schools. From single sessions to term-long programmes — designed to inspire, include, and connect."
+    ctaPrimary={{ label: 'Book a School Workshop', href: '#contact' }}
+    ctaSecondary={{ label: 'See all programmes', href: '/' }}
+  />
+
+  <!-- About -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal">
+          <p class="text-xs font-medium text-forest uppercase tracking-widest mb-3">Why drumming in schools?</p>
+          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">
+            Every classroom has a rhythm waiting to be found
+          </h2>
+          <p class="text-charcoal/65 leading-relaxed mb-4">
+            Drumming workshops bring a kind of energy into a school that's hard to manufacture any other way. When a class picks up djembes and starts playing together, something shifts — students who drift at the back suddenly lean in, quiet kids find a voice, and the whole room synchronises around a shared beat.
+          </p>
+          <p class="text-charcoal/65 leading-relaxed mb-4">
+            These sessions are designed to complement and enrich what teachers are already doing — linking to The Arts, Social Sciences, and Health & PE, while delivering something that feels genuinely extraordinary.
+          </p>
+          <p class="text-charcoal/65 leading-relaxed mb-6">
+            All equipment is provided. No musical experience is needed — from students or teachers.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1.5 bg-sage/15 text-sage-dark rounded-full text-xs font-medium">Year 1–8</span>
+            <span class="px-3 py-1.5 bg-sage/15 text-sage-dark rounded-full text-xs font-medium">All abilities</span>
+            <span class="px-3 py-1.5 bg-sage/15 text-sage-dark rounded-full text-xs font-medium">Equipment provided</span>
+            <span class="px-3 py-1.5 bg-sage/15 text-sage-dark rounded-full text-xs font-medium">Curriculum-linked</span>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="rounded-3xl bg-linen aspect-[4/3] flex items-center justify-center relative overflow-hidden">
+            <svg class="w-20 h-20 text-sage/20" fill="none" viewBox="0 0 48 48" stroke="currentColor" stroke-width="0.75">
+              <circle cx="24" cy="24" r="22"/><circle cx="24" cy="24" r="16"/>
+              <circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="4" fill="currentColor"/>
+            </svg>
+            <p class="absolute bottom-4 text-stone/50 text-xs">Workshop photo coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 lg:py-28 bg-linen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Learning outcomes</p>
+        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">What students gain</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {benefits.map((b, i) => (
+          <div class:list={['reveal', `reveal-delay-${(i % 3) + 1}`, 'bg-cream rounded-2xl p-6 border border-linen']}>
+            <h3 class="font-heading text-lg font-semibold text-charcoal mb-2">{b.title}</h3>
+            <p class="text-sm text-charcoal/60 leading-relaxed">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Session structure</p>
+        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">What to expect</h2>
+        <p class="text-charcoal/60 mt-3">Sessions run 45–60 minutes and are designed for full class groups (up to 30 students).</p>
+      </div>
+      <div class="space-y-6">
+        {whatToExpect.map((step, i) => (
+          <div class:list={['reveal', `reveal-delay-${i + 1}`, 'flex gap-5 items-start']}>
+            <div class="shrink-0 w-12 h-12 rounded-full bg-sage flex items-center justify-center">
+              <span class="font-heading text-sm font-semibold text-cream">{step.step}</span>
+            </div>
+            <div>
+              <h3 class="font-heading text-lg font-semibold text-charcoal mb-1">{step.title}</h3>
+              <p class="text-sm text-charcoal/60 leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-16 lg:py-20 bg-linen">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <TestimonialCard
+        quote="We booked Chewy for an end-of-term celebration and it turned into one of the most memorable experiences of the school year. Even our most disengaged students were beaming. We've already booked him for next term."
+        author="Aroha Tūhoe"
+        role="Head of Wellbeing"
+        organization="Northcote College"
+        featured={true}
+      />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div class="reveal">
+          <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Book a workshop</p>
+          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">Bring rhythm to your classroom</h2>
+          <p class="text-charcoal/65 leading-relaxed mb-6">Available as one-off workshops, term programmes, school camps, and special events. I bring all the instruments — you just bring your class.</p>
+          <ul class="space-y-3">
+            {['Year 1–8 classes welcome', 'Up to 30 students per session', 'All instruments provided', 'Available across Auckland North Shore'].map(item => (
+              <li class="flex items-center gap-3 text-sm text-charcoal/70">
+                <svg class="w-5 h-5 text-sage-dark shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2 bg-linen rounded-3xl p-8 border border-linen/80">
+          <h3 class="font-heading text-xl font-semibold text-charcoal mb-6">Enquire about school workshops</h3>
+          <ContactForm preselectedService="Schools Programme" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,79 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  eyebrow?: string;
+  theme?: 'cream' | 'linen' | 'sage' | 'forest' | 'charcoal';
+}
+
+const { title, description, href, eyebrow, theme = 'linen' } = Astro.props;
+
+const themeClasses: Record<string, string> = {
+  cream: 'bg-cream border-linen text-charcoal hover:border-sage/40',
+  linen: 'bg-linen border-linen text-charcoal hover:border-sage/40',
+  sage: 'bg-sage text-cream border-sage hover:bg-sage-dark',
+  forest: 'bg-forest text-cream border-forest hover:bg-charcoal',
+  charcoal: 'bg-charcoal text-cream border-charcoal/20 hover:bg-forest',
+};
+
+const eyebrowClasses: Record<string, string> = {
+  cream: 'text-sage-dark',
+  linen: 'text-sage-dark',
+  sage: 'text-cream/70',
+  forest: 'text-sage-light',
+  charcoal: 'text-sage-light',
+};
+
+const descClasses: Record<string, string> = {
+  cream: 'text-charcoal/65',
+  linen: 'text-charcoal/65',
+  sage: 'text-cream/80',
+  forest: 'text-cream/75',
+  charcoal: 'text-cream/70',
+};
+
+const arrowClasses: Record<string, string> = {
+  cream: 'text-forest',
+  linen: 'text-forest',
+  sage: 'text-cream',
+  forest: 'text-sage-light',
+  charcoal: 'text-gold',
+};
+---
+
+<a
+  href={href}
+  class:list={[
+    'group block rounded-2xl border p-7 lg:p-8 transition-all duration-300',
+    'hover:shadow-md hover:-translate-y-0.5',
+    themeClasses[theme],
+  ]}
+>
+  {eyebrow && (
+    <p class:list={['text-xs font-medium uppercase tracking-widest mb-3', eyebrowClasses[theme]]}>
+      {eyebrow}
+    </p>
+  )}
+
+  <h3 class="font-heading text-xl lg:text-2xl font-semibold mb-3 leading-snug">
+    {title}
+  </h3>
+
+  <p class:list={['text-sm leading-relaxed mb-6', descClasses[theme]]}>
+    {description}
+  </p>
+
+  <span class:list={[
+    'inline-flex items-center gap-2 text-sm font-medium transition-gap duration-200',
+    arrowClasses[theme],
+  ]}>
+    Learn more
+    <svg
+      class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </span>
+</a>

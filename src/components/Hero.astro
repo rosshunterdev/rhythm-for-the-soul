@@ -1,0 +1,153 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  eyebrow?: string;
+  bgImage?: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+  centered?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  dark?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  eyebrow,
+  bgImage,
+  ctaPrimary,
+  ctaSecondary,
+  centered = false,
+  size = 'lg',
+  dark = true,
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'py-16 lg:py-20',
+  md: 'py-20 lg:py-28',
+  lg: 'py-24 lg:py-36',
+};
+
+const titleSize = {
+  sm: 'text-3xl lg:text-4xl',
+  md: 'text-4xl lg:text-5xl',
+  lg: 'text-5xl lg:text-7xl',
+};
+---
+
+<section
+  class:list={[
+    'relative overflow-hidden',
+    sizeClasses[size],
+    dark ? 'bg-charcoal text-cream' : 'bg-cream text-charcoal',
+    bgImage ? 'bg-cover bg-center' : '',
+  ]}
+  style={bgImage ? `background-image: url('${bgImage}')` : ''}
+>
+  {/* Organic background decoration */}
+  {!bgImage && (
+    <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+      {dark ? (
+        <>
+          <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-forest/30 blur-3xl"></div>
+          <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-sage-dark/20 blur-3xl"></div>
+          <!-- Drum ring SVG pattern -->
+          <svg class="absolute right-8 top-1/2 -translate-y-1/2 opacity-10 hidden lg:block" width="320" height="320" viewBox="0 0 320 320" fill="none">
+            <circle cx="160" cy="160" r="155" stroke="#7B9E87" stroke-width="1"/>
+            <circle cx="160" cy="160" r="125" stroke="#7B9E87" stroke-width="1"/>
+            <circle cx="160" cy="160" r="95" stroke="#C4933F" stroke-width="1"/>
+            <circle cx="160" cy="160" r="65" stroke="#7B9E87" stroke-width="1"/>
+            <circle cx="160" cy="160" r="35" stroke="#C4933F" stroke-width="1.5"/>
+            <circle cx="160" cy="160" r="10" fill="#C4933F" opacity="0.5"/>
+          </svg>
+        </>
+      ) : (
+        <>
+          <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-sage/10 blur-3xl"></div>
+          <div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-linen blur-3xl"></div>
+        </>
+      )}
+    </div>
+  )}
+
+  {/* Overlay for bg images */}
+  {bgImage && <div class="absolute inset-0 bg-charcoal/60"></div>}
+
+  <div class:list={[
+    'relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+    centered ? 'text-center' : '',
+  ]}>
+    <div class:list={[
+      'max-w-3xl',
+      centered ? 'mx-auto' : '',
+    ]}>
+      {eyebrow && (
+        <p class:list={[
+          'text-xs font-medium uppercase tracking-widest mb-4',
+          dark ? 'text-sage-light' : 'text-sage-dark',
+        ]}>
+          {eyebrow}
+        </p>
+      )}
+
+      <h1 class:list={[
+        'font-heading font-semibold leading-tight mb-4',
+        titleSize[size],
+        dark ? 'text-cream' : 'text-charcoal',
+      ]}>
+        {title}
+      </h1>
+
+      {subtitle && (
+        <p class:list={[
+          'text-xl lg:text-2xl font-light mb-4',
+          dark ? 'text-sage-light' : 'text-stone',
+        ]}>
+          {subtitle}
+        </p>
+      )}
+
+      {description && (
+        <p class:list={[
+          'text-base lg:text-lg leading-relaxed mb-8 max-w-2xl',
+          centered ? 'mx-auto' : '',
+          dark ? 'text-cream/70' : 'text-charcoal/70',
+        ]}>
+          {description}
+        </p>
+      )}
+
+      {(ctaPrimary || ctaSecondary) && (
+        <div class:list={[
+          'flex flex-wrap gap-4 mt-8',
+          centered ? 'justify-center' : '',
+        ]}>
+          {ctaPrimary && (
+            <a
+              href={ctaPrimary.href}
+              class="inline-flex items-center px-7 py-3.5 bg-gold text-cream rounded-full font-medium text-sm hover:bg-gold-dark transition-colors shadow-sm"
+            >
+              {ctaPrimary.label}
+            </a>
+          )}
+          {ctaSecondary && (
+            <a
+              href={ctaSecondary.href}
+              class:list={[
+                'inline-flex items-center px-7 py-3.5 rounded-full font-medium text-sm border transition-colors',
+                dark
+                  ? 'border-cream/30 text-cream hover:border-cream/60 hover:bg-cream/10'
+                  : 'border-charcoal/30 text-charcoal hover:border-charcoal/60 hover:bg-charcoal/5',
+              ]}
+            >
+              {ctaSecondary.label}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

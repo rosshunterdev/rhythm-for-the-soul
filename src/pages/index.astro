@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+import SpotifyEmbed from '../components/SpotifyEmbed.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const audienceDoors = [
+  {
+    title: 'For Schools & Educators',
+    description: 'Creative percussion workshops that build teamwork, listening, and cultural connection. Curriculum-linked and available for all year levels.',
+    href: '/schools',
+    eyebrow: 'Education',
+    theme: 'forest' as const,
+  },
+  {
+    title: 'For Rest Homes & Aged Care',
+    description: 'Joyful, gentle drumming sessions that lift mood, spark memories, and build meaningful connections in residential care settings.',
+    href: '/rest-homes',
+    eyebrow: 'Wellbeing',
+    theme: 'sage' as const,
+  },
+  {
+    title: 'For Workplaces & Teams',
+    description: 'High-energy team building through the universal language of rhythm. No experience needed — just a willingness to have fun.',
+    href: '/corporate',
+    eyebrow: 'Corporate',
+    theme: 'charcoal' as const,
+  },
+  {
+    title: 'For Events & Individuals',
+    description: 'Birthday parties, sound journeys, fire shows, laughter yoga, and 1-on-1 sessions — rhythm for every occasion.',
+    href: '/events',
+    eyebrow: 'Events',
+    theme: 'linen' as const,
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Chewy has an extraordinary gift for meeting people where they are. Our students who rarely engage in group activities were drumming together within minutes — it was genuinely moving to watch.",
+    author: "Aroha Tūhoe",
+    role: "Head of Wellbeing",
+    organization: "Northcote College",
+    featured: true,
+  },
+  {
+    quote: "The residents absolutely light up when Chewy arrives. Some of our quieter residents become the most enthusiastic participants — rhythm reaches places that words can't.",
+    author: "Margaret Collins",
+    role: "Activities Coordinator",
+    organization: "Bayswater Rest Home",
+  },
+  {
+    quote: "We've tried lots of team-building activities over the years, but nothing has come close to the energy and genuine laughter that came out of our drumming session. Highly recommend.",
+    author: "David Park",
+    role: "People & Culture Manager",
+    organization: "Auckland tech company",
+  },
+];
+---
+
+<BaseLayout
+  title="Rhythm for Everyone"
+  description="Rhythm for the Soul — drumming workshops, music therapy, and live entertainment on Auckland's North Shore. Led by Julian 'Chewy', connecting communities through the power of rhythm."
+>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="relative bg-navy overflow-hidden">
+    <!-- Drum ring decoration -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-end" aria-hidden="true">
+      <svg class="opacity-[0.15] w-[650px] h-[650px] -mr-32 shrink-0" viewBox="0 0 650 650" fill="none">
+        <circle cx="325" cy="325" r="318" stroke="#7B9E87" stroke-width="2"/>
+        <circle cx="325" cy="325" r="264" stroke="#7B9E87" stroke-width="1.5"/>
+        <circle cx="325" cy="325" r="210" stroke="#C4933F" stroke-width="1.5"/>
+        <circle cx="325" cy="325" r="156" stroke="#7B9E87" stroke-width="1.5"/>
+        <circle cx="325" cy="325" r="102" stroke="#C4933F" stroke-width="2"/>
+        <circle cx="325" cy="325" r="48"  stroke="#7B9E87" stroke-width="1.5"/>
+        <circle cx="325" cy="325" r="16"  fill="#C4933F" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-28 pb-14 lg:pb-20">
+
+      <!-- Centred text block -->
+      <div class="text-center mb-10 lg:mb-14">
+        <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-5">
+          Auckland's North Shore, New Zealand
+        </p>
+        <h1 class="font-heading text-5xl lg:text-6xl xl:text-7xl font-semibold text-cream leading-tight mb-6">
+          Rhythm<br/>
+          <span class="text-gold italic font-light">for everyone</span>
+        </h1>
+        <p class="text-xl text-cream/70 font-light leading-relaxed mb-4 max-w-xl mx-auto">
+          Drumming workshops, music therapy, and live entertainment — bringing people together through the power of rhythm and sound.
+        </p>
+        <p class="text-base text-cream/50 mb-10 max-w-lg mx-auto">
+          Led by Julian "Chewy", serving schools, rest homes, workplaces, and individuals across Auckland's North Shore.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/drumbeat" class="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-cream rounded-full font-medium text-sm hover:bg-gold-dark transition-colors shadow-sm">
+            Explore Programmes
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center px-7 py-3.5 rounded-full font-medium text-sm border border-cream/25 text-cream hover:border-cream/50 hover:bg-cream/10 transition-colors">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+
+      <!-- YouTube embed — full width, below CTAs -->
+      <div class="reveal">
+        <!-- "See us in action" eyebrow -->
+        <div class="flex items-center gap-4 justify-center mb-4">
+          <div class="h-px flex-1 bg-white/10 max-w-20"></div>
+          <p class="text-xs font-medium text-sage-light/70 uppercase tracking-widest">See us in action</p>
+          <div class="h-px flex-1 bg-white/10 max-w-20"></div>
+        </div>
+
+        <YouTubeEmbed
+          videoId="dQw4w9WgXcQ"
+          title="Rhythm for the Soul — watch a drumming session with Chewy"
+          caption="Placeholder video — Chewy's own footage coming soon"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Audience doors ─────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-sage-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Who it's for</p>
+        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">
+          Rhythm meets everyone where they are
+        </h2>
+        <p class="text-charcoal/60 mt-3 max-w-xl mx-auto">
+          From classrooms to boardrooms, rest homes to birthday parties — there's a programme designed for your group.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+        {audienceDoors.map((card, i) => (
+          <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
+            <ServiceCard {...card} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DRUMBEAT feature ───────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-linen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal">
+          <!-- Decorative drum icon -->
+          <div class="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-forest" fill="none" viewBox="0 0 48 48" stroke="currentColor" stroke-width="1.5">
+              <ellipse cx="24" cy="16" rx="18" ry="8" />
+              <line x1="6" y1="16" x2="6" y2="32"/>
+              <line x1="42" y1="16" x2="42" y2="32"/>
+              <ellipse cx="24" cy="32" rx="18" ry="8" />
+            </svg>
+          </div>
+          <p class="text-xs font-medium text-forest uppercase tracking-widest mb-3">Featured Programme</p>
+          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-4">
+            DRUMBEAT — discovering rhythm, unity & transformation
+          </h2>
+          <p class="text-charcoal/65 leading-relaxed mb-4">
+            DRUMBEAT is an evidence-based group music therapy programme using hand drumming to support young people's social-emotional wellbeing, resilience, and sense of belonging.
+          </p>
+          <p class="text-charcoal/65 leading-relaxed mb-8">
+            Developed for at-risk youth and delivered in school and community settings, it creates a non-judgmental space where every voice — and every beat — counts.
+          </p>
+          <a href="/drumbeat" class="inline-flex items-center gap-2 px-7 py-3.5 bg-forest text-cream rounded-full font-medium text-sm hover:bg-charcoal transition-colors shadow-sm">
+            Discover DRUMBEAT
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Stats / highlights -->
+        <div class="reveal reveal-delay-2 grid grid-cols-2 gap-4">
+          {[
+            { stat: '10+', label: 'Years facilitating' },
+            { stat: '500+', label: 'Sessions delivered' },
+            { stat: '20+', label: 'Instruments used' },
+            { stat: 'NZ-wide', label: 'Reach & impact' },
+          ].map(item => (
+            <div class="rounded-2xl bg-cream border border-linen p-6 text-center">
+              <p class="font-heading text-4xl font-semibold text-forest mb-1">{item.stat}</p>
+              <p class="text-sm text-charcoal/60">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About teaser ───────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Image placeholder -->
+        <div class="reveal order-2 lg:order-1">
+          <div class="rounded-3xl bg-linen aspect-[4/5] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-sage/30" fill="none" viewBox="0 0 48 48" stroke="currentColor" stroke-width="0.75">
+                <circle cx="24" cy="24" r="22"/>
+                <circle cx="24" cy="24" r="16"/>
+                <circle cx="24" cy="24" r="10"/>
+                <circle cx="24" cy="24" r="4" fill="currentColor"/>
+              </svg>
+            </div>
+            <p class="relative text-stone/50 text-sm text-center px-8">Photo of Chewy<br/><span class="text-xs">Image coming soon</span></p>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="reveal reveal-delay-2 order-1 lg:order-2">
+          <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Meet your facilitator</p>
+          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">
+            Hi, I'm Chewy
+          </h2>
+          <p class="text-charcoal/65 leading-relaxed mb-4">
+            I'm Julian — most people call me Chewy. I'm a drumming facilitator, music therapist, and performer based on Auckland's North Shore, and I believe deeply in the power of rhythm to heal, connect, and transform.
+          </p>
+          <p class="text-charcoal/65 leading-relaxed mb-4">
+            Over the years I've worked with young people in schools, older adults in rest homes, teams in boardrooms, and individuals seeking something that words alone can't offer. The instruments change — djembes, handpans, didgeridoos, native flutes — but the experience of coming together through rhythm is always the same: immediate, joyful, and real.
+          </p>
+          <p class="text-charcoal/65 leading-relaxed mb-8">
+            I work across Auckland's North Shore and surrounds, and I'd love to bring that energy to your group.
+          </p>
+          <a href="/about" class="inline-flex items-center gap-2 text-forest font-medium text-sm hover:text-charcoal transition-colors">
+            Read my full story
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Spotify section ────────────────────────────────── -->
+  <section class="py-16 lg:py-20 bg-navy">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="reveal">
+        <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-3">Listen</p>
+        <h2 class="font-heading text-2xl lg:text-3xl font-semibold text-cream mb-2">
+          Listen to the rhythm
+        </h2>
+        <p class="text-cream/55 mb-7 max-w-sm mx-auto">
+          Get a feel for the vibe — press play.
+        </p>
+        <SpotifyEmbed />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ───────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-sage-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">What people say</p>
+        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">
+          Stories of rhythm in action
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {testimonials.map((t, i) => (
+          <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
+            <TestimonialCard {...t} />
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="/testimonials" class="inline-flex items-center gap-2 text-forest font-medium text-sm hover:text-charcoal transition-colors">
+          Read all testimonials
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact CTA ────────────────────────────────────── -->
+  <section class="py-20 lg:py-28 bg-linen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div class="reveal">
+          <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Ready to begin?</p>
+          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">
+            Let's find the right programme for your group
+          </h2>
+          <p class="text-charcoal/65 leading-relaxed mb-6">
+            Whether you know exactly what you need or you're just curious, I'd love to chat. Tell me about your group and I'll come back with ideas tailored to you.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Free initial consultation',
+              'Tailored to your group size and needs',
+              'Serving Auckland North Shore and surrounds',
+            ].map(item => (
+              <li class="flex items-center gap-3 text-sm text-charcoal/70">
+                <svg class="w-5 h-5 text-sage-dark shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-2 bg-cream rounded-3xl p-8 border border-linen shadow-sm">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

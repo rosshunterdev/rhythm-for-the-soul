@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 52" fill="none">
+  <!-- Drum ring decoration -->
+  <circle cx="26" cy="26" r="22" stroke="#7B9E87" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <circle cx="26" cy="26" r="15" stroke="#C4933F" stroke-width="1" fill="none" opacity="0.5"/>
+  <circle cx="26" cy="26" r="8" fill="#3D5A45" opacity="0.8"/>
+  <!-- Wordmark -->
+  <text x="58" y="22" font-family="Georgia, serif" font-size="16" font-weight="600" fill="#1a2419" letter-spacing="-0.3">Rhythm</text>
+  <text x="58" y="40" font-family="Georgia, serif" font-size="13" font-weight="300" fill="#6B7C3A" letter-spacing="0.5">for the Soul</text>
+</svg>

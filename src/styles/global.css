@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Typography */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Fraunces', Georgia, ui-serif, serif;
+
+  /* Brand palette */
+  --color-cream: #FAF7F0;
+  --color-linen: #F5EFE6;
+  --color-clay: #C4A882;
+  --color-stone: #9E8E7E;
+  --color-sage: #7a9e70;
+  --color-sage-light: #edf3e8;
+  --color-sage-dark: #5C7D68;
+  --color-olive: #6B7C3A;
+  --color-forest: #5a7d52;
+  --color-charcoal: #1a2419;
+  --color-gold: #C4933F;
+  --color-gold-light: #D4A84F;
+  --color-gold-dark: #A67A2E;
+  --color-navy: #2e3141;
+  --color-navy-light: #3d4257;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  background-color: #FAF7F0;
+  color: #1a2419;
+}
+
+body {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fraunces', Georgia, ui-serif, serif;
+  line-height: 1.15;
+}
+
+/* ── Scroll reveal ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Focus ring ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #C4933F;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Custom scrollbar (Webkit) ───────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5EFE6; }
+::-webkit-scrollbar-thumb { background: #7a9e70; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #5a7d52; }
+
+/* ── Prose overrides ─────────────────────────────────────── */
+.prose {
+  --tw-prose-body: #1a2419;
+  --tw-prose-headings: #1a2419;
+  --tw-prose-links: #C4933F;
+  --tw-prose-bold: #1a2419;
+}

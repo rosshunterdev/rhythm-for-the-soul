@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+const testimonials = [
+  {
+    quote: "Chewy has an extraordinary gift for meeting people where they are. Our students who rarely engage in group activities were drumming together within minutes — it was genuinely moving to watch.",
+    author: "Aroha Tūhoe",
+    role: "Head of Wellbeing",
+    organization: "Northcote College",
+    category: "Schools",
+    featured: true,
+  },
+  {
+    quote: "The residents absolutely light up when Chewy arrives. Some of our quieter residents become the most enthusiastic participants — rhythm reaches places that words can't.",
+    author: "Margaret Collins",
+    role: "Activities Coordinator",
+    organization: "Bayswater Rest Home",
+    category: "Rest Homes",
+  },
+  {
+    quote: "We've tried lots of team-building activities over the years, but nothing has come close to the energy and genuine laughter that came out of our drumming session. Highly recommend.",
+    author: "David Park",
+    role: "People & Culture Manager",
+    organization: "Auckland technology company",
+    category: "Corporate",
+  },
+  {
+    quote: "The DRUMBEAT programme has become one of the most powerful tools in our wellbeing toolkit. Students who we'd struggled to reach through traditional pastoral care were showing up, drumming together, and actually talking about how they felt.",
+    author: "Kiri Whaanga",
+    role: "Dean of Students",
+    organization: "West Auckland Intermediate",
+    category: "DRUMBEAT",
+    featured: true,
+  },
+  {
+    quote: "My 2-year-old talks about 'the drum man' every day. The sessions are so warmly facilitated — Chewy has a real gift with little ones.",
+    author: "Priya Nair",
+    role: "Parent",
+    organization: "Takapuna",
+    category: "Early Childhood",
+  },
+  {
+    quote: "Our clients with significant communication differences were engaged and expressive in ways we rarely see in other activities. Chewy has an incredible ability to meet people exactly where they are.",
+    author: "Tama Hēmi",
+    role: "Support Services Coordinator",
+    organization: "North Shore disability support service",
+    category: "Disability",
+  },
+  {
+    quote: "The sound journey was the most profoundly relaxed I have felt in years. The combination of handpan, didgeridoo, and the depth of the drums just dissolved everything. I cried and I don't even know why — it was exactly what I needed.",
+    author: "Louise Whitfield",
+    role: "Participant",
+    organization: "Sound journey, Milford",
+    category: "Events",
+  },
+  {
+    quote: "We booked Chewy for our daughter's 8th birthday and it was the best decision we've ever made for a kids' party. Every single child was fully engaged, even the shy ones. The parents all wanted to join in too!",
+    author: "Rachel Kim",
+    role: "Parent",
+    organization: "Birthday party, Takapuna",
+    category: "Events",
+  },
+  {
+    quote: "I've been coming to 1-on-1 sessions with Chewy for six months and the impact has extended far beyond music. He meets you as a whole person and the work we've done together with rhythm has genuinely shifted how I experience stress.",
+    author: "James Thornton",
+    role: "1-on-1 client",
+    organization: "North Shore",
+    category: "1-on-1",
+  },
+  {
+    quote: "Chewy brings a rare combination of genuine musicianship, therapeutic wisdom, and pure human warmth to everything he does. Whether you're 4 or 75, he makes you feel like you belong in that circle completely.",
+    author: "Dr. Sarah Fleming",
+    role: "Registered Music Therapist",
+    organization: "Auckland",
+    category: "Professional",
+    featured: true,
+  },
+];
+
+const categories = ['All', ...new Set(testimonials.map(t => t.category))];
+---
+
+<BaseLayout
+  title="Testimonials"
+  description="Read what schools, rest homes, corporate teams, and individuals say about their Rhythm for the Soul experience with Chewy."
+>
+
+  <!-- Hero -->
+  <section class="bg-linen py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">What people say</p>
+      <h1 class="font-heading text-4xl lg:text-5xl font-semibold text-charcoal mb-5">
+        Stories of rhythm in action
+      </h1>
+      <p class="text-charcoal/60 max-w-xl mx-auto">
+        From classrooms to boardrooms, rest homes to birthday parties — here's what people share after experiencing a Rhythm for the Soul session.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured testimonials -->
+  <section class="py-16 lg:py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-8 text-center">Featured</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+        {testimonials.filter(t => t.featured).map((t, i) => (
+          <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
+            <TestimonialCard {...t} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-linen pt-16">
+        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-8 text-center">All testimonials</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {testimonials.filter(t => !t.featured).map((t, i) => (
+            <div class:list={['reveal', `reveal-delay-${(i % 3) + 1}`]}>
+              <TestimonialCard {...t} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="py-16 lg:py-20 bg-charcoal text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-cream mb-5">
+        Ready to experience it for yourself?
+      </h2>
+      <p class="text-cream/60 mb-8">
+        Every session is different, every group is unique — but the feeling of finding your rhythm together is universal.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center gap-2 px-7 py-3.5 bg-gold text-cream rounded-full font-medium text-sm hover:bg-gold-dark transition-colors">
+          Get in Touch
+        </a>
+        <a href="/" class="inline-flex items-center px-7 py-3.5 rounded-full font-medium text-sm border border-cream/25 text-cream hover:border-cream/50 hover:bg-cream/10 transition-colors">
+          Explore Programmes
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
