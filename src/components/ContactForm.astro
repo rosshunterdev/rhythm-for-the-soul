@@ -60,11 +60,11 @@ const uid = Math.random().toString(36).slice(2, 7);
 // Field styling
 const fieldBase = 'w-full rounded-lg border px-4 py-3 text-sm transition-colors outline-none focus:ring-2';
 const inputLight = 'bg-white border-sage/30 text-charcoal placeholder-stone/50 focus:border-sage focus:ring-sage/15';
-const inputDark  = 'bg-white/10 border-white/20 text-cream placeholder-cream/40 focus:border-gold focus:ring-gold/20';
+const inputDark  = 'bg-white/10 border-white/20 text-cream placeholder-cream/40 focus:border-sage focus:ring-sage/20';
 const inputClasses = dark ? inputDark : inputLight;
 const labelClasses = dark ? 'text-cream/70' : 'text-charcoal/60';
 const linkClasses  = dark
-  ? 'text-cream/55 hover:text-gold'
+  ? 'text-cream/55 hover:text-sage-light'
   : 'text-charcoal/50 hover:text-forest';
 ---
 
@@ -87,7 +87,7 @@ const linkClasses  = dark
           for={`cf-name-${uid}`}
           class:list={['block text-xs font-medium mb-1.5 uppercase tracking-wide', labelClasses]}
         >
-          Name <span class="text-gold">*</span>
+          Name <span class:list={[dark ? 'text-sage-light' : 'text-forest']}>*</span>
         </label>
         <input
           type="text"
@@ -105,7 +105,7 @@ const linkClasses  = dark
           for={`cf-email-${uid}`}
           class:list={['block text-xs font-medium mb-1.5 uppercase tracking-wide', labelClasses]}
         >
-          Email <span class="text-gold">*</span>
+          Email <span class:list={[dark ? 'text-sage-light' : 'text-forest']}>*</span>
         </label>
         <input
           type="email"
@@ -185,7 +185,7 @@ const linkClasses  = dark
         for={`cf-message-${uid}`}
         class:list={['block text-xs font-medium mb-1.5 uppercase tracking-wide', labelClasses]}
       >
-        Message <span class="text-gold">*</span>
+        Message <span class:list={[dark ? 'text-sage-light' : 'text-forest']}>*</span>
       </label>
       <textarea
         id={`cf-message-${uid}`}
@@ -203,7 +203,7 @@ const linkClasses  = dark
         type="submit"
         class:list={[
           'px-8 py-3.5 text-cream rounded-full font-medium text-sm transition-colors shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed',
-          dark ? 'bg-gold hover:bg-gold-dark' : 'bg-sage hover:bg-forest',
+          dark ? 'bg-forest hover:bg-charcoal' : 'bg-forest hover:bg-charcoal',
         ]}
         data-submit-btn
       >
