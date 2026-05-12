@@ -1,0 +1,218 @@
+---
+/**
+ * HeroMedia — hero visual column.
+ *
+ * To swap in a real photo, change ONE prop here in index.astro:
+ *   <HeroMedia src="/images/chewy-drumming.jpg" />
+ *
+ * To use a muted looping local video instead:
+ *   <HeroMedia videoSrc="/videos/chewy-session.mp4" />
+ *
+ * To use a muted autoplay YouTube background (takes priority):
+ *   <HeroMedia youtubeId="dQw4w9WgXcQ" />
+ */
+interface Props {
+  src?:       string;  // ← ONE LINE: path to the real hero photo
+  alt?:       string;
+  videoSrc?:  string;  // local .mp4/.webm — muted, looping background video
+  youtubeId?: string;  // YouTube video ID — muted autoplay bg (overrides src/videoSrc)
+}
+
+const {
+  src,
+  alt = "Chewy facilitating a drumming session with participants",
+  videoSrc,
+  youtubeId,
+} = Astro.props;
+
+const ytSrc = youtubeId
+  ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&controls=0&playlist=${youtubeId}&modestbranding=1&rel=0&disablekb=1&fs=0`
+  : null;
+---
+
+<div class="hmf">
+
+  {ytSrc ? (
+    <!-- Muted autoplay YouTube background -->
+    <div class="hmf-yt" aria-hidden="true">
+      <iframe
+        src={ytSrc}
+        title="Background video"
+        allow="autoplay; encrypted-media"
+        class="hmf-yt-frame"
+      />
+    </div>
+  ) : videoSrc ? (
+    <!-- Muted looping local video -->
+    <video autoplay muted loop playsinline class="hmf-fill" aria-hidden="true">
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+  ) : src ? (
+    <!-- Real photo — swap src prop above to update -->
+    <img src={src} alt={alt} class="hmf-fill hmf-img" loading="eager" decoding="async" />
+  ) : (
+    <!-- Placeholder — remove once a real photo is available -->
+    <div class="hmf-placeholder">
+      <!-- Drum-head concentric ring pattern -->
+      <svg class="hmf-ph-bg" viewBox="0 0 400 600" fill="none"
+           preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <circle cx="200" cy="300" r="380" stroke="#7AAB7E" stroke-width="1"/>
+        <circle cx="200" cy="300" r="295" stroke="#7AAB7E" stroke-width="1"/>
+        <circle cx="200" cy="300" r="210" stroke="#C4A882" stroke-width="1.5"/>
+        <circle cx="200" cy="300" r="130" stroke="#7AAB7E" stroke-width="1"/>
+        <circle cx="200" cy="300" r="65"  stroke="#C4A882" stroke-width="2"/>
+        <circle cx="200" cy="300" r="20"  fill="#C4A882"/>
+      </svg>
+
+      <div class="hmf-ph-content">
+        <!-- Camera / people icon -->
+        <svg class="hmf-ph-icon" viewBox="0 0 48 48" fill="none"
+             stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <rect x="4" y="16" width="40" height="26" rx="3"/>
+          <circle cx="24" cy="29" r="8"/>
+          <circle cx="24" cy="29" r="4"/>
+          <path stroke-linecap="round"
+                d="M17 16v-4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/>
+          <circle cx="37" cy="22" r="2" fill="currentColor" stroke="none" opacity="0.5"/>
+        </svg>
+        <p class="hmf-ph-text">
+          <strong>Chewy in action</strong>
+          Photo of Chewy performing with participants — coming soon
+        </p>
+      </div>
+
+      <span class="hmf-ph-badge">Placeholder</span>
+    </div>
+  )}
+
+  <!-- Warm bottom vignette (real media only) -->
+  {(src || videoSrc || ytSrc) && (
+    <div class="hmf-vignette" aria-hidden="true" />
+  )}
+
+</div>
+
+<style>
+  /* ── Frame ─────────────────────────────────────────────── */
+  .hmf {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #2E4A33;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    /* Subtle warm-clay inner border */
+    box-shadow: inset 0 0 0 1px rgba(196, 168, 130, 0.2);
+  }
+
+  /* ── Photo ──────────────────────────────────────────────── */
+  .hmf-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* keeps faces in frame */
+  }
+
+  /* ── Local video (same as photo) ──────────────────────── */
+  /* .hmf-fill covers both */
+
+  /* ── YouTube background ─────────────────────────────────── */
+  /* Scale up 20 % on each axis to avoid letterboxing */
+  .hmf-yt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hmf-yt-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ── Warm bottom vignette ───────────────────────────────── */
+  .hmf-vignette {
+    position: absolute;
+    inset-x: 0;
+    bottom: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(37, 51, 37, 0.55), transparent);
+    pointer-events: none;
+  }
+
+  /* ── Placeholder ────────────────────────────────────────── */
+  .hmf-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem;
+  }
+
+  .hmf-ph-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.09;
+  }
+
+  .hmf-ph-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    max-width: 17rem;
+  }
+
+  .hmf-ph-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    color: #C4A882;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .hmf-ph-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: rgba(247, 244, 238, 0.38);
+  }
+
+  .hmf-ph-text strong {
+    display: block;
+    font-weight: 500;
+    color: rgba(247, 244, 238, 0.58);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .hmf-ph-badge {
+    position: absolute;
+    top: 0.875rem;
+    right: 0.875rem;
+    z-index: 2;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.25rem;
+    background: rgba(196, 168, 130, 0.1);
+    border: 1px solid rgba(196, 168, 130, 0.22);
+    color: rgba(196, 168, 130, 0.65);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+</style>

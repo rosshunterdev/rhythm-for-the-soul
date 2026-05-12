@@ -1,0 +1,402 @@
+{/*
+  ──────────────────────────────────────────────────────────────────────────
+  HERO — replacement
+  ──────────────────────────────────────────────────────────────────────────
+  Drop this in place of the existing <section class="hero">…</section> block.
+  Then replace the .hero / .hero-overlay / .hero-content / .byline /
+  .display-heading / .display-accent / .sub-head / .ctas / .cta-fill /
+  .cta-outline blocks in your <style> tag with the CSS at the bottom.
+  Header.astro also needs the transparent-by-default tweak — see the note
+  after the code.
+*/}
+
+<section class="hero" aria-label="Introduction">
+
+  {/* Background image — separate element so we can animate it */}
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  {/* Two-layer overlay: left-weighted vignette + thin bottom fade */}
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <div class="hero-bottom-fade" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+
+      {/* Availability pill — credibility in one line */}
+      <p class="hero-pill">
+        <span class="hero-pill-dot" aria-hidden="true"></span>
+        Booking now — Auckland &amp; North Shore
+      </p>
+
+      <h1 class="display-heading">
+        Rhythm
+        <em class="display-accent">for everyone</em>
+      </h1>
+
+      <p class="sub-head">
+        Drumming workshops, music therapy, laughter yoga and fire shows — for
+        schools, rest homes, disability services and corporate events.
+      </p>
+
+      <div class="ctas">
+        <a href="/drumbeat" class="cta-fill">
+          Explore Programmes
+          <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="/contact" class="cta-outline">Get in Touch</a>
+      </div>
+
+      {/* Attribution — moved below, with Chewy as the human anchor */}
+      <p class="hero-attribution">
+        Led by <span class="hero-attribution-name">Julian &ldquo;Chewy&rdquo;</span>
+        <span class="hero-attribution-sep" aria-hidden="true">·</span>
+        <span class="hero-attribution-loc">10+ years on the North Shore</span>
+      </p>
+
+    </div>
+  </div>
+
+  {/* Scroll cue */}
+  <a href="#meet-chewy" class="hero-scroll" aria-label="Scroll to meet Chewy">
+    <span class="hero-scroll-label">Meet Chewy</span>
+    <span class="hero-scroll-chevron" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+      </svg>
+    </span>
+  </a>
+
+</section>
+
+
+{/*
+  ──────────────────────────────────────────────────────────────────────────
+  STYLES — replace the hero block in your existing <style> tag with this.
+  ──────────────────────────────────────────────────────────────────────────
+*/}
+
+<style>
+  /* ── Hero ────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    min-height: 600px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Background as its own layer so we can zoom it */
+  .hero-bg {
+    position: absolute;
+    inset: -2% -2% -2% -2%; /* slight bleed so the zoom never reveals an edge */
+    background-image: url('/images/group.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    z-index: -2;
+    animation: hero-zoom 18s ease-out 0.2s both;
+    will-change: transform;
+  }
+
+  @keyframes hero-zoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; transform: scale(1.0); }
+  }
+
+  /* Left-weighted vignette: gives the text a calm canvas without
+     darkening the right side of the photo */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        100deg,
+        rgba(46, 49, 65, 0.78) 0%,
+        rgba(46, 49, 65, 0.55) 28%,
+        rgba(46, 49, 65, 0.18) 55%,
+        rgba(46, 49, 65, 0.05) 75%,
+        rgba(46, 49, 65, 0.0) 100%
+      );
+  }
+
+  /* Thin bottom fade — softens the join to the next section
+     and keeps the scroll cue legible */
+  .hero-bottom-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(46, 49, 65, 0) 0%,
+      rgba(46, 49, 65, 0.35) 100%
+    );
+  }
+
+  .hero-inner {
+    position: relative;
+    height: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 6.5rem 1.5rem 7rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-inner { padding: 6rem 2.5rem 8rem; }
+  }
+
+  .hero-content {
+    max-width: 36rem;
+    width: 100%;
+    /* Stagger-in reveal for the whole block on load */
+    animation: hero-fade-in 1s ease-out 0.3s both;
+  }
+
+  @keyframes hero-fade-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content { animation: none; }
+  }
+
+  /* ── Availability pill ─────────────────────────────────── */
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.95rem 0.45rem 0.85rem;
+    background-color: rgba(245, 240, 232, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(245, 240, 232, 0.18);
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    color: rgba(245, 240, 232, 0.92);
+    margin: 0 0 1.75rem;
+  }
+
+  .hero-pill-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #7AAB7E;
+    box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.7);
+    animation: hero-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hero-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.55); }
+    50%      { box-shadow: 0 0 0 6px rgba(122, 171, 126, 0.0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-pill-dot { animation: none; }
+  }
+
+  /* ── Headline ──────────────────────────────────────────── */
+  .display-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    /* A touch smaller than 126px so the left-aligned block feels balanced */
+    font-size: clamp(64px, 8.5vw, 112px);
+    font-variation-settings: 'opsz' 144, 'wght' 600;
+    line-height: 0.95;
+    color: #F5F0E8;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
+  }
+
+  .display-accent {
+    display: block;
+    font-style: italic; /* restore the warmth — flat upright loses Fraunces' charm */
+    font-variation-settings: 'opsz' 144, 'wght' 350, 'SOFT' 50;
+    color: #F5F0E8;
+    margin-top: 0.1em;
+  }
+
+  /* ── Subhead ───────────────────────────────────────────── */
+  .sub-head {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: rgba(245, 240, 232, 0.82);
+    max-width: 32rem;
+    margin: 0 0 2.25rem;
+    text-wrap: pretty;
+  }
+
+  /* ── CTAs ──────────────────────────────────────────────── */
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-fill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.75rem;
+    background-color: #4A7C59;
+    color: #F5F0E8;
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(74, 124, 89, 0.35);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta-fill:hover {
+    background-color: #3A5E48;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(74, 124, 89, 0.45);
+  }
+  .cta-fill:hover .cta-arrow { transform: translateX(3px); }
+
+  .cta-arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.95rem 1.75rem;
+    border: 1.5px solid rgba(245, 240, 232, 0.4);
+    color: #F5F0E8;
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cta-outline:hover {
+    border-color: rgba(245, 240, 232, 0.75);
+    background-color: rgba(245, 240, 232, 0.08);
+  }
+
+  /* ── Attribution ───────────────────────────────────────── */
+  .hero-attribution {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(245, 240, 232, 0.65);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-attribution-name {
+    color: rgba(245, 240, 232, 0.92);
+    font-weight: 600;
+  }
+
+  .hero-attribution-sep {
+    margin: 0 0.5rem;
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .hero-attribution-loc {
+    /* keep grouped on one line where possible */
+    white-space: nowrap;
+  }
+
+  /* ── Scroll cue ────────────────────────────────────────── */
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    z-index: 1;
+    animation: hero-fade-in 1s ease-out 1.2s both;
+  }
+
+  .hero-scroll:hover { color: #F5F0E8; }
+
+  .hero-scroll-chevron {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: hero-bob 2.2s ease-in-out infinite;
+  }
+  .hero-scroll-chevron svg { width: 100%; height: 100%; }
+
+  @keyframes hero-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-chevron { animation: none; }
+  }
+
+  /* Hide scroll label on very small screens — keep the chevron */
+  @media (max-width: 480px) {
+    .hero-scroll-label { display: none; }
+    .hero-scroll { bottom: 1.25rem; }
+  }
+
+  /* ── Mobile tuning ─────────────────────────────────────── */
+  @media (max-width: 767px) {
+    .hero-inner {
+      padding: 6rem 1.25rem 6rem;
+      align-items: flex-end; /* push content lower on mobile so face/scene reads */
+    }
+
+    .hero-content { max-width: 100%; }
+
+    /* On mobile the vignette can darken more uniformly since
+       the photo doesn't have room to breathe sideways anyway */
+    .hero-vignette {
+      background: linear-gradient(
+        180deg,
+        rgba(46, 49, 65, 0.25) 0%,
+        rgba(46, 49, 65, 0.40) 45%,
+        rgba(46, 49, 65, 0.72) 100%
+      );
+    }
+
+    .hero-bottom-fade { display: none; }
+
+    .sub-head { font-size: 1rem; }
+
+    .ctas { gap: 0.625rem; }
+    .cta-fill, .cta-outline {
+      padding: 0.85rem 1.5rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>

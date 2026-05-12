@@ -385,19 +385,20 @@ const testimonials = [
     inset: -2% -2% -2% -2%;
     background-image: url('/images/group.jpg');
     background-size: cover;
-    background-position: center 35%;
+    background-position: center 65%;
+    transform: scaleX(-1);
     z-index: 0;
     animation: hero-zoom 18s ease-out 0.2s both;
     will-change: transform;
   }
 
   @keyframes hero-zoom {
-    from { transform: scale(1.08); }
-    to   { transform: scale(1.0); }
+    from { transform: scaleX(-1) scale(1.08); }
+    to   { transform: scaleX(-1) scale(1.0); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-photo { animation: none; transform: scale(1.0); }
+    .hero-photo { animation: none; transform: scaleX(-1) scale(1.0); }
   }
 
   /* Amber/clay overlay — ties photo's golden light to brand palette */
@@ -427,7 +428,7 @@ const testimonials = [
   .hero-panel {
     position: absolute;
     top: 0; left: 0; bottom: 0;
-    width: 58%;
+    width: 50%;
     background: #2E3141;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
     z-index: 1;
@@ -468,7 +469,7 @@ const testimonials = [
   }
 
   .hero-content {
-    max-width: 52%;
+    max-width: 46%;
     width: 100%;
     animation: hero-fade-in 1s ease-out 0.3s both;
   }

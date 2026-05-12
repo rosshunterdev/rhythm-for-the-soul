@@ -1,0 +1,171 @@
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+  @media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
+
+  .card { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s, transform 0.2s; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  .card:hover { transform: translateY(-2px); }
+  .card.selected { border-color: #4A7C59; }
+  .card-body { padding: 1rem 1.125rem 1.25rem; }
+  .card-body h3 { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; color: #2E3141; margin: 0 0 0.35rem; }
+  .card-body p { font-family: 'DM Sans', sans-serif; font-size: 0.775rem; color: #6b7280; margin: 0; line-height: 1.5; }
+
+  /* Shared hero base */
+  .hero-mock {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Shared text panel */
+  .text-panel {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 1.4rem;
+    gap: 0.6rem;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(122,171,126,0.18); border: 1px solid rgba(122,171,126,0.3);
+    border-radius: 999px; padding: 0.2rem 0.6rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.52rem; font-weight: 600;
+    color: #7AAB7E; letter-spacing: 0.05em; width: fit-content;
+  }
+  .pill-dot { width: 5px; height: 5px; border-radius: 50%; background: #7AAB7E; }
+  .sub {
+    font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+    color: rgba(245,240,232,0.65); line-height: 1.55; margin: 0;
+  }
+  .btn { background: #4A7C59; color: #F5F0E8; border-radius: 999px; padding: 0.35rem 0.85rem; font-size: 0.57rem; font-family: 'DM Sans', sans-serif; font-weight: 600; width: fit-content; }
+  .attr { font-family: 'DM Sans', sans-serif; font-size: 0.52rem; color: rgba(245,240,232,0.45); }
+
+  /* Shared photo */
+  .photo-panel {
+    position: relative;
+    flex: 1;
+    background: linear-gradient(135deg, #c4956a 0%, #a0734a 40%, #6b4c2e 100%);
+    overflow: hidden;
+  }
+  .photo-panel::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23a0734a'/%3E%3Crect x='0' y='0' width='2' height='2' fill='%23c4956a' opacity='0.5'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23c4956a' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
+  /* ── Option A: Sharp 50/50 vertical split ── */
+  .opt-a .text-panel { width: 50%; background: #2E3141; }
+  .opt-a h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem; font-weight: 700; line-height: 0.92;
+    color: #F5F0E8; margin: 0;
+  }
+  .opt-a h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; }
+  .opt-a .photo-panel { width: 50%; }
+
+  /* ── Option B: Diagonal edge + warm amber photo tint ── */
+  .opt-b .text-panel { width: 55%; background: #2E3141; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); padding-right: 2.5rem; }
+  .opt-b h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem; font-weight: 700; line-height: 0.92;
+    color: #F5F0E8; margin: 0;
+  }
+  .opt-b h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; font-size: 1.85rem; }
+  .opt-b .photo-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; }
+  .opt-b .photo-panel::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(135deg, rgba(196,168,130,0.45) 0%, rgba(122,171,126,0.2) 60%, transparent 100%);
+  }
+
+  /* ── Option C: 60% panel, gradient bleed, forest-tinted photo ── */
+  .opt-c { background: #2E3141; }
+  .opt-c .text-panel { width: 60%; background: transparent; }
+  .opt-c h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.3rem; font-weight: 800; line-height: 0.88;
+    color: #F5F0E8; margin: 0; letter-spacing: -0.02em;
+  }
+  .opt-c h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; font-size: 2rem; }
+  .opt-c .divider { width: 1.75rem; height: 2px; background: #4A7C59; }
+  .opt-c .photo-panel { width: 40%; position: relative; }
+  .opt-c .photo-panel::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to right,
+      #2E3141 0%,
+      rgba(46,49,65,0.7) 20%,
+      rgba(74,124,89,0.35) 60%,
+      rgba(74,124,89,0.15) 100%
+    );
+  }
+  .opt-c .noise {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+</style>
+
+<h2>How should the split feel?</h2>
+<p class="subtitle">Three treatments of the left panel / right photo relationship. Same layout, different character.</p>
+
+<div class="cards">
+
+  <!-- A: Sharp architectural -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="hero-mock opt-a">
+      <div class="text-panel">
+        <span class="pill"><span class="pill-dot"></span>Booking now · North Shore</span>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <p class="sub">Drumming workshops, music therapy & fire shows for schools, rest homes & corporate.</p>
+        <span class="btn">Explore Programmes</span>
+        <p class="attr">Julian "Chewy" · 10+ years</p>
+      </div>
+      <div class="photo-panel"></div>
+    </div>
+    <div class="card-body">
+      <h3>A — Hard split, neutral photo</h3>
+      <p>Clean 50/50 vertical edge. Photo shows full natural warmth with no tint. Sharp, confident, architectural. The contrast speaks for itself.</p>
+    </div>
+  </div>
+
+  <!-- B: Diagonal + amber -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="hero-mock opt-b" style="position:relative">
+      <div class="photo-panel"></div>
+      <div class="text-panel">
+        <span class="pill"><span class="pill-dot"></span>Booking now · North Shore</span>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <p class="sub">Drumming workshops, music therapy & fire shows.</p>
+        <span class="btn">Explore Programmes</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Diagonal edge, amber photo tint</h3>
+      <p>The split cuts diagonally (parallelogram clip). A warm clay/amber overlay on the photo links it to the brand palette and softens the transition. Dynamic and editorial.</p>
+    </div>
+  </div>
+
+  <!-- C: Gradient bleed, forest photo tint, noise texture -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="hero-mock opt-c">
+      <div class="noise"></div>
+      <div class="text-panel">
+        <span class="pill"><span class="pill-dot"></span>Booking now · North Shore</span>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <div class="divider"></div>
+        <p class="sub">Drumming workshops, music therapy & fire shows for schools, rest homes & corporate.</p>
+        <span class="btn">Explore Programmes</span>
+        <p class="attr">Julian "Chewy" · 10+ years on the North Shore</p>
+      </div>
+      <div class="photo-panel"></div>
+    </div>
+    <div class="card-body">
+      <h3>C — Gradient bleed, forest photo tint, subtle noise</h3>
+      <p>The charcoal panel dissolves into the photo via a gradient — no hard edge. Photo gets a forest-green tint, pulling it into the brand palette. Subtle film-grain noise gives warmth and texture. Most "handcrafted" feeling.</p>
+    </div>
+  </div>
+
+</div>

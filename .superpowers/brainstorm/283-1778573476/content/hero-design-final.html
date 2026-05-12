@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero Design — Rhythm for the Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a1c28;
+    font-family: 'DM Sans', sans-serif;
+    padding: 2rem 1rem 3rem;
+    color: #d1d5db;
+  }
+
+  .label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7AAB7E;
+    margin-bottom: 1.25rem;
+  }
+  .sublabel {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Hero container ────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+
+  /* ── Photo layer (right, full bleed behind) ────────────────── */
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    /* Simulate group.jpg — warm golden tent gathering */
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(220,160,80,0.6) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 70%, rgba(180,120,60,0.5) 0%, transparent 40%),
+      linear-gradient(135deg, #5a3a1e 0%, #8b5e34 25%, #c4956a 50%, #a07040 75%, #6b4020 100%);
+    z-index: 0;
+  }
+
+  /* Amber/clay overlay over photo — ties to brand */
+  .hero-photo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      140deg,
+      rgba(196,168,130,0.38) 0%,
+      rgba(196,168,130,0.18) 45%,
+      rgba(122,171,126,0.12) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Right-edge darkening for depth */
+  .hero-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 30%,
+      rgba(46,49,65,0.3) 100%
+    );
+    z-index: 2;
+  }
+
+  /* ── Left text panel (parallelogram clip) ──────────────────── */
+  .hero-panel {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 58%;
+    background: #2E3141;
+    /* Diagonal right edge — parallelogram cut */
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    z-index: 3;
+  }
+
+  /* Subtle noise texture on panel */
+  .hero-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Gradient bleed along diagonal edge — softens the cut */
+  .hero-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 20%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(196,168,130,0.06)
+    );
+    pointer-events: none;
+  }
+
+  /* ── Content inside panel ──────────────────────────────────── */
+  .hero-content {
+    position: relative; z-index: 4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+    max-width: 52%;
+    gap: 0;
+  }
+
+  /* Availability pill */
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(122,171,126,0.14);
+    border: 1px solid rgba(122,171,126,0.28);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem 0.35rem 0.75rem;
+    font-size: 0.72rem; font-weight: 600;
+    color: rgba(122,171,126,0.95);
+    letter-spacing: 0.02em;
+    width: fit-content;
+    margin-bottom: 1.75rem;
+  }
+  .pill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #7AAB7E;
+    box-shadow: 0 0 0 0 rgba(122,171,126,0.7);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(122,171,126,0.55); }
+    50%       { box-shadow: 0 0 0 5px rgba(122,171,126,0); }
+  }
+
+  /* Main heading */
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3.5rem, 5.5vw, 5.25rem);
+    font-variation-settings: 'opsz' 144, 'wght' 700;
+    line-height: 0.9;
+    color: #F5F0E8;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    display: block;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'wght' 300, 'SOFT' 50;
+    color: #C4A882;
+    margin-top: 0.08em;
+  }
+
+  /* Green rule — handcrafted accent */
+  .rule {
+    width: 2.25rem; height: 2px;
+    background: #4A7C59;
+    margin-bottom: 1.25rem;
+    border-radius: 1px;
+  }
+
+  /* Sub-heading */
+  .sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.925rem;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.72);
+    max-width: 28rem;
+    margin-bottom: 2rem;
+  }
+
+  /* CTA row */
+  .ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .btn-fill {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.875rem 1.6rem;
+    background: #4A7C59;
+    color: #F5F0E8;
+    border-radius: 999px;
+    font-size: 0.875rem; font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(74,124,89,0.38);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center;
+    padding: 0.875rem 1.6rem;
+    border: 1.5px solid rgba(245,240,232,0.35);
+    color: #F5F0E8;
+    border-radius: 999px;
+    font-size: 0.875rem; font-weight: 500;
+  }
+
+  /* Attribution */
+  .attr {
+    font-size: 0.775rem;
+    color: rgba(245,240,232,0.42);
+    letter-spacing: 0.01em;
+  }
+  .attr strong { color: rgba(245,240,232,0.82); font-weight: 600; }
+  .attr .sep { margin: 0 0.4rem; color: rgba(245,240,232,0.25); }
+
+  /* ── Scroll cue ───────────────────────────────────────────── */
+  .scroll-cue {
+    position: absolute;
+    bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: rgba(245,240,232,0.5);
+    font-size: 0.625rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    z-index: 5;
+    text-decoration: none;
+  }
+  .scroll-chevron {
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  .scroll-chevron svg { width: 1.25rem; height: 1.25rem; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(3px); }
+  }
+
+  /* ── Mobile preview ───────────────────────────────────────── */
+  .mobile-wrap {
+    max-width: 340px;
+    margin: 3rem auto 0;
+  }
+  .mobile-label {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #6b7280;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .mobile-hero {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  }
+  .mobile-photo {
+    height: 200px;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(220,160,80,0.6) 0%, transparent 55%),
+      linear-gradient(135deg, #5a3a1e 0%, #c4956a 50%, #6b4020 100%);
+    position: relative;
+  }
+  .mobile-photo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(46,49,65,0.1) 0%,
+      rgba(46,49,65,0.55) 100%
+    );
+  }
+  .mobile-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      140deg,
+      rgba(196,168,130,0.35) 0%,
+      transparent 60%
+    );
+  }
+  .mobile-text {
+    background: #2E3141;
+    padding: 1.5rem;
+  }
+  .mobile-pill {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(122,171,126,0.14); border: 1px solid rgba(122,171,126,0.28);
+    border-radius: 999px; padding: 0.2rem 0.6rem;
+    font-size: 0.6rem; font-weight: 600; color: #7AAB7E;
+    margin-bottom: 1rem;
+  }
+  .mobile-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: #7AAB7E; }
+  .mobile-h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.25rem;
+    font-variation-settings: 'opsz' 144, 'wght' 700;
+    line-height: 0.9; color: #F5F0E8;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+  .mobile-h1 em { display: block; font-style: italic; font-variation-settings: 'opsz' 144, 'wght' 300; color: #C4A882; }
+  .mobile-rule { width: 1.75rem; height: 2px; background: #4A7C59; margin-bottom: 0.9rem; border-radius: 1px; }
+  .mobile-sub { font-size: 0.8rem; line-height: 1.6; color: rgba(245,240,232,0.65); margin-bottom: 1.25rem; }
+  .mobile-btn { background: #4A7C59; color: #F5F0E8; border-radius: 999px; padding: 0.7rem 1.25rem; font-size: 0.8rem; font-weight: 600; display: inline-block; }
+</style>
+</head>
+<body>
+
+<p class="label">Hero Design — Rhythm for the Soul</p>
+<p class="sublabel">Desktop at left · Mobile preview below · Using real brand palette &amp; fonts</p>
+
+<!-- Desktop -->
+<div class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-panel"></div>
+
+  <div class="hero-content">
+    <span class="pill">
+      <span class="pill-dot"></span>
+      Booking now &mdash; Auckland &amp; North Shore
+    </span>
+
+    <h1>
+      Rhythm
+      <em>for everyone</em>
+    </h1>
+
+    <div class="rule"></div>
+
+    <p class="sub">
+      Drumming workshops, music therapy, laughter yoga and fire shows — for schools, rest homes, disability services and corporate events.
+    </p>
+
+    <div class="ctas">
+      <a class="btn-fill" href="#">
+        Explore Programmes
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a class="btn-outline" href="#">Get in Touch</a>
+    </div>
+
+    <p class="attr">
+      Led by <strong>Julian &ldquo;Chewy&rdquo;</strong>
+      <span class="sep">&middot;</span>
+      10+ years on the North Shore
+    </p>
+  </div>
+
+  <a class="scroll-cue" href="#">
+    Meet Chewy
+    <span class="scroll-chevron">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
+      </svg>
+    </span>
+  </a>
+</div>
+
+<!-- Mobile preview -->
+<div class="mobile-wrap">
+  <p class="mobile-label">Mobile</p>
+  <div class="mobile-hero">
+    <div class="mobile-photo"></div>
+    <div class="mobile-text">
+      <span class="mobile-pill"><span class="mobile-pill-dot"></span>Booking now · North Shore</span>
+      <div class="mobile-h1">Rhythm<em>for everyone</em></div>
+      <div class="mobile-rule"></div>
+      <p class="mobile-sub">Drumming workshops, music therapy, laughter yoga and fire shows.</p>
+      <span class="mobile-btn">Explore Programmes</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

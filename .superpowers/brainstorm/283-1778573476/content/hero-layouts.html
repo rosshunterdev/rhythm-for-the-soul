@@ -1,0 +1,229 @@
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  .q { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: #4a5568; margin-bottom: 0.25rem; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+  @media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
+
+  .card { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s, transform 0.2s; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+  .card.selected { border-color: #4A7C59; }
+
+  .card-image { height: 260px; position: relative; overflow: hidden; }
+  .card-body { padding: 1rem 1.125rem 1.25rem; }
+  .card-body h3 { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; color: #2E3141; margin: 0 0 0.35rem; }
+  .card-body p { font-family: 'DM Sans', sans-serif; font-size: 0.775rem; color: #6b7280; margin: 0; line-height: 1.5; }
+
+  /* ── Shared mock photo (warm golden tone) ────────────── */
+  .mock-photo {
+    background: linear-gradient(135deg, #c4956a 0%, #a0734a 40%, #6b4c2e 100%);
+    width: 100%; height: 100%;
+    position: relative;
+  }
+  .mock-photo::after {
+    content: '📸 group.jpg';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: rgba(255,255,255,0.35);
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Option A: Split Panel ───────────────────────────── */
+  .option-a .card-image {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    height: 260px;
+  }
+  .option-a .panel-left {
+    background: #2E3141;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 1.25rem;
+    gap: 0.75rem;
+  }
+  .option-a .pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(122,171,126,0.18); border: 1px solid rgba(122,171,126,0.3);
+    border-radius: 999px; padding: 0.2rem 0.6rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.55rem; font-weight: 500;
+    color: #7AAB7E; letter-spacing: 0.05em;
+    width: fit-content;
+  }
+  .option-a .pill-dot { width: 5px; height: 5px; border-radius: 50%; background: #7AAB7E; }
+  .option-a h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: #F5F0E8; line-height: 1;
+    margin: 0;
+  }
+  .option-a h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; }
+  .option-a .sub { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; color: rgba(245,240,232,0.65); line-height: 1.5; margin: 0; }
+  .option-a .cta-row { display: flex; gap: 0.4rem; margin-top: 0.25rem; }
+  .option-a .btn-fill { background: #4A7C59; color: #F5F0E8; border-radius: 999px; padding: 0.3rem 0.75rem; font-size: 0.55rem; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .option-a .panel-right { position: relative; overflow: hidden; }
+  .option-a .panel-right .mock-photo { height: 100%; }
+  .option-a .panel-right .mock-photo::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+    background: linear-gradient(to right, #2E3141, transparent);
+    z-index: 1;
+  }
+
+  /* ── Option B: Bold Overlay ──────────────────────────── */
+  .option-b .card-image { position: relative; }
+  .option-b .mock-photo { position: absolute; inset: 0; }
+  .option-b .mock-photo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(46,49,65,0.82) 0%,
+      rgba(46,49,65,0.70) 30%,
+      rgba(74,124,89,0.35) 70%,
+      rgba(196,168,130,0.25) 100%
+    );
+    z-index: 1;
+  }
+  .option-b .overlay-content {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.5rem 1.25rem;
+  }
+  .option-b h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.6rem; font-weight: 800; line-height: 0.9;
+    color: #F5F0E8; margin: 0 0 0.5rem;
+    text-shadow: 0 2px 20px rgba(46,49,65,0.4);
+  }
+  .option-b h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; }
+  .option-b .tag-row { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .option-b .tag { background: rgba(122,171,126,0.25); border: 1px solid rgba(122,171,126,0.4); border-radius: 999px; padding: 0.15rem 0.5rem; font-size: 0.5rem; color: #7AAB7E; font-family: 'DM Sans', sans-serif; font-weight: 600; letter-spacing: 0.05em; }
+  .option-b .sub { font-size: 0.58rem; color: rgba(245,240,232,0.72); font-family: 'DM Sans', sans-serif; line-height: 1.5; margin: 0 0 0.6rem; }
+  .option-b .btn-fill { background: #4A7C59; color: #F5F0E8; border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.55rem; font-family: 'DM Sans', sans-serif; font-weight: 600; display: inline-block; width: fit-content; box-shadow: 0 2px 12px rgba(74,124,89,0.45); }
+
+  /* ── Option C: Concert Poster / Dark Stage ───────────── */
+  .option-c .card-image {
+    background: #1e2030;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-c .photo-strip {
+    position: absolute;
+    right: 0; top: 0; bottom: 0; width: 38%;
+    overflow: hidden;
+  }
+  .option-c .photo-strip .mock-photo { height: 100%; width: 100%; }
+  .option-c .photo-strip::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, #1e2030 0%, transparent 60%);
+    z-index: 1;
+  }
+  .option-c .photo-strip::after { display: none; }
+
+  .option-c .text-area {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    height: 100%;
+    max-width: 62%;
+  }
+  .option-c .eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 0.5rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #7AAB7E; margin: 0 0 0.5rem;
+  }
+  .option-c h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem; font-weight: 900; line-height: 0.9;
+    color: #F5F0E8; margin: 0 0 0.35rem;
+    letter-spacing: -0.02em;
+  }
+  .option-c h1 em { display: block; font-style: italic; font-weight: 300; color: #C4A882; font-size: 1.9rem; }
+  .option-c .divider { width: 2rem; height: 2px; background: #4A7C59; margin: 0.5rem 0; }
+  .option-c .sub { font-family: 'DM Sans', sans-serif; font-size: 0.58rem; color: rgba(245,240,232,0.6); line-height: 1.55; margin: 0 0 0.75rem; }
+  .option-c .btn-fill { background: #4A7C59; color: #F5F0E8; border-radius: 999px; padding: 0.3rem 0.75rem; font-size: 0.55rem; font-family: 'DM Sans', sans-serif; font-weight: 600; display: inline-block; width: fit-content; }
+  .option-c .noise {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.06;
+  }
+</style>
+
+<h2>Which hero structure feels right for Rhythm for the Soul?</h2>
+<p class="subtitle">All three use the brand palette and real fonts. Tap to select.</p>
+
+<div class="cards">
+
+  <!-- Option A: Split Panel -->
+  <div class="card option-a" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter" style="display:none">A</div>
+    <div class="card-image">
+      <div class="panel-left">
+        <span class="pill"><span class="pill-dot"></span>Booking now · North Shore</span>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <p class="sub">Drumming workshops, music therapy, laughter yoga & fire shows.</p>
+        <div class="cta-row">
+          <span class="btn-fill">Explore Programmes</span>
+        </div>
+      </div>
+      <div class="panel-right">
+        <div class="mock-photo"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Split Panel</h3>
+      <p>Dark left column with all text; photo bleeds in from the right. Guaranteed legibility — text is never over image. Editorial and structured. Mobile: photo above, text below.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Bold Overlay -->
+  <div class="card option-b" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter" style="display:none">B</div>
+    <div class="card-image">
+      <div class="mock-photo"></div>
+      <div class="overlay-content">
+        <div class="tag-row">
+          <span class="tag">Drumming</span>
+          <span class="tag">Music Therapy</span>
+          <span class="tag">Fire Shows</span>
+        </div>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <p class="sub">Workshops, therapy & live performance — for schools, rest homes, corporate & events.</p>
+        <span class="btn-fill">Explore Programmes →</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Bold Overlay</h3>
+      <p>Full-bleed photo with a layered gradient overlay — warm amber-to-charcoal. Giant Fraunces heading anchors the bottom. Strong atmosphere and immersion. Most like the current layout but far more dramatic.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Concert Poster / Dark Stage -->
+  <div class="card option-c" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter" style="display:none">C</div>
+    <div class="card-image">
+      <div class="noise"></div>
+      <div class="photo-strip">
+        <div class="mock-photo"></div>
+      </div>
+      <div class="text-area">
+        <p class="eyebrow">Auckland's North Shore</p>
+        <h1>Rhythm<em>for everyone</em></h1>
+        <div class="divider"></div>
+        <p class="sub">Drumming workshops, music therapy, laughter yoga & fire shows — for every community.</p>
+        <span class="btn-fill">Explore Programmes</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Dark Stage</h3>
+      <p>Deep charcoal background, bold typographic treatment. Photo is a supporting panel on the right — like a concert poster. Maximum text clarity. Feels handcrafted and distinctive. Works differently on mobile.</p>
+    </div>
+  </div>
+
+</div>
