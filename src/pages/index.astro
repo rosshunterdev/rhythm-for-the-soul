@@ -6,6 +6,7 @@ import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 import SpotifyEmbed from '../components/SpotifyEmbed.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+
 const audienceDoors = [
   {
     title: 'For Schools & Educators',
@@ -66,93 +67,107 @@ const testimonials = [
 >
 
   <!-- ── Hero ───────────────────────────────────────────── -->
-  <section class="hero">
+  <section class="hero" aria-label="Introduction">
 
-    <div class="hero-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="hero-split">
+    <!-- Photo layer: full-bleed, amber overlay via ::before/::after -->
+    <div class="hero-photo" aria-hidden="true"></div>
 
-        <!-- Text column -->
-        <div class="hero-text">
+    <!-- Charcoal panel: diagonal clip-path, sibling of content -->
+    <div class="hero-panel" aria-hidden="true"></div>
 
-          <!-- 1. Byline -->
-          <p class="byline">Julian &ldquo;Chewy&rdquo; &middot; Auckland&rsquo;s North Shore</p>
+    <!-- Content: z-index above panel, max-width keeps text clear of diagonal -->
+    <div class="hero-inner">
+      <div class="hero-content">
 
-          <!-- 2. Display heading -->
-          <h1 class="display-heading">
-            Rhythm<br>
-            <em class="display-accent">for everyone</em>
-          </h1>
+        <p class="hero-pill">
+          <span class="hero-pill-dot" aria-hidden="true"></span>
+          Booking now — Auckland &amp; North Shore
+        </p>
 
-          <!-- 3. Sub-heading -->
-          <p class="sub-head">
-            A range of entertainment and educational programs including music, drumming, laughter and fire performance.
-If you would like something different from what you see here such as a tailor made session or show please contact me as I can probably meet your needs.
-          </p>
+        <h1 class="display-heading">
+          Rhythm
+          <em class="display-accent">for everyone</em>
+        </h1>
 
-          <!-- 4. CTAs -->
-          <div class="ctas">
-            <a href="/drumbeat" class="cta-fill">
-              Explore Programmes
-            </a>
-            <a href="/contact" class="cta-outline">Get in Touch</a>
-          </div>
+        <div class="hero-rule" aria-hidden="true"></div>
 
+        <p class="sub-head">
+          Drumming workshops, music therapy, laughter yoga and fire shows — for
+          schools, rest homes, disability services and corporate events.
+        </p>
+
+        <div class="ctas">
+          <a href="/drumbeat" class="cta-fill">
+            Explore Programmes
+            <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="/contact" class="cta-outline">Get in Touch</a>
         </div>
 
-        <!-- Drum ring column -->
-        <div class="ring-col" aria-hidden="true">
-          <svg class="drum-ring" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Outer rim — the structural frame -->
-            <circle cx="300" cy="300" r="284" stroke="#C4A882" stroke-width="10"/>
-            <!-- Tension hardware zone -->
-            <circle cx="300" cy="300" r="264" stroke="#F7F4EE" stroke-width="1" stroke-opacity="0.18"/>
-            <!-- Bearing edge -->
-            <circle cx="300" cy="300" r="246" stroke="#F7F4EE" stroke-width="2" stroke-opacity="0.45"/>
-            <!-- Drum head outer zone -->
-            <circle cx="300" cy="300" r="218" stroke="#7AAB7E" stroke-width="1.5" stroke-opacity="0.75"/>
-            <!-- Mid ring -->
-            <circle cx="300" cy="300" r="178" stroke="#F7F4EE" stroke-width="1" stroke-opacity="0.15"/>
-            <!-- Inner accent ring (gold) -->
-            <circle cx="300" cy="300" r="135" stroke="#C4A882" stroke-width="2.5"/>
-            <!-- Centre zone ring -->
-            <circle cx="300" cy="300" r="88" stroke="#F7F4EE" stroke-width="1" stroke-opacity="0.2"/>
-            <!-- Centre sweet spot -->
-            <circle cx="300" cy="300" r="28" fill="#C4A882" fill-opacity="0.9"/>
-            <circle cx="300" cy="300" r="12" fill="#C4A882"/>
-            <!-- 10 tension lugs evenly spaced around the rim (r=265 from centre) -->
-            <circle cx="300"   cy="35"   r="8" fill="#C4A882"/>
-            <circle cx="455.8" cy="85.6" r="8" fill="#C4A882"/>
-            <circle cx="552"   cy="218.1" r="8" fill="#C4A882"/>
-            <circle cx="552"   cy="381.9" r="8" fill="#C4A882"/>
-            <circle cx="455.8" cy="514.4" r="8" fill="#C4A882"/>
-            <circle cx="300"   cy="565"  r="8" fill="#C4A882"/>
-            <circle cx="144.2" cy="514.4" r="8" fill="#C4A882"/>
-            <circle cx="48"    cy="381.9" r="8" fill="#C4A882"/>
-            <circle cx="48"    cy="218.1" r="8" fill="#C4A882"/>
-            <circle cx="144.2" cy="85.6" r="8" fill="#C4A882"/>
-          </svg>
-        </div>
+        <p class="hero-attribution">
+          Led by <span class="hero-attribution-name">Julian &ldquo;Chewy&rdquo;</span>
+          <span class="hero-attribution-sep" aria-hidden="true">·</span>
+          <span class="hero-attribution-loc">10+ years on the North Shore</span>
+        </p>
 
       </div>
     </div>
 
-    <!-- YouTube embed — full width below the split -->
-    <div class="video-section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
-      <div class="video-label-row reveal">
-        <span class="video-divider"></span>
-        <p class="video-label">See us in action</p>
-        <span class="video-divider"></span>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <YouTubeEmbed
-          videoId="dQw4w9WgXcQ"
-          title="Rhythm for the Soul — watch a drumming session with Chewy"
-          caption="Placeholder video — Chewy's own footage coming soon"
-        />
-      </div>
-    </div>
+    <a href="#meet-chewy" class="hero-scroll" aria-label="Scroll to meet Chewy">
+      <span class="hero-scroll-label">Meet Chewy</span>
+      <span class="hero-scroll-chevron" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
+      </span>
+    </a>
 
   </section>
+
+  <!-- ── Meet Chewy ─────────────────────────────────────── -->
+  <section class="meet-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="meet-grid">
+
+        <div class="reveal">
+          <img
+            src="/images/chewy-about.png"
+            alt="Julian 'Chewy' facilitating a drumming session with participants"
+            class="meet-img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <p class="meet-eyebrow">About Chewy</p>
+          <h2 class="meet-heading">Meet Chewy</h2>
+          <p class="meet-body">Julian — known to everyone as Chewy — is a professional drummer, music therapist and community performer based on Auckland's North Shore. With over a decade of experience, he has brought rhythm into schools, rest homes, disability services and boardrooms across the region.</p>
+          <p class="meet-body">His sessions are inclusive by design: no experience needed, no performance pressure. Just the simple, powerful act of making music together.</p>
+          <a href="/about" class="meet-link">More about Chewy</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── In action ──────────────────────────────────────── -->
+  <div class="video-section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="video-label-row reveal">
+      <span class="video-divider"></span>
+      <p class="video-label">See us in action</p>
+      <span class="video-divider"></span>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <YouTubeEmbed
+        videoId="dQw4w9WgXcQ"
+        title="Rhythm for the Soul — watch a drumming session with Chewy"
+        caption="Placeholder video — Chewy's own footage coming soon"
+      />
+    </div>
+  </div>
 
   <!-- ── Audience doors ─────────────────────────────────── -->
   <section class="py-20 lg:py-28 bg-sage-light">
@@ -355,197 +370,463 @@ If you would like something different from what you see here such as a tailor ma
 </BaseLayout>
 
 <style>
-  /* ── Hero section ──────────────────────────────────────── */
+  /* ── Hero ────────────────────────────────────────────────── */
   .hero {
     position: relative;
-    background-color: #2A3D2C;
+    height: 100svh;
+    min-height: 600px;
     overflow: hidden;
+    isolation: isolate;
   }
 
-  /* Grain texture via SVG feTurbulence pseudo-element */
-  .hero::before {
-    content: '';
+  /* ── Photo layer ─────────────────────────────────────────── */
+  .hero-photo {
     position: absolute;
-    inset: 0;
+    inset: -2% -2% -2% -2%;
+    background-image: url('/images/group.jpg');
+    background-size: cover;
+    background-position: center 35%;
     z-index: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 300px 300px;
-    background-repeat: repeat;
-    opacity: 0.042;
-    mix-blend-mode: overlay;
+    animation: hero-zoom 18s ease-out 0.2s both;
+    will-change: transform;
   }
 
-  .hero-inner {
-    position: relative;
+  @keyframes hero-zoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-photo { animation: none; transform: scale(1.0); }
+  }
+
+  /* Amber/clay overlay — ties photo's golden light to brand palette */
+  .hero-photo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      140deg,
+      rgba(196, 168, 130, 0.38) 0%,
+      rgba(196, 168, 130, 0.18) 45%,
+      rgba(122, 171, 126, 0.12) 100%
+    );
+  }
+
+  /* Right-edge darkening for depth */
+  .hero-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 30%,
+      rgba(46, 49, 65, 0.3) 100%
+    );
+  }
+
+  /* ── Charcoal panel ──────────────────────────────────────── */
+  .hero-panel {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 58%;
+    background: #2E3141;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
     z-index: 1;
   }
 
-  /* Split grid */
-  .hero-split {
-    display: grid;
-    grid-template-columns: 1fr;
+  /* Noise texture — stops panel feeling flat */
+  .hero-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Diagonal edge softener — amber glow blurs the parallelogram cut */
+  .hero-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 20%;
+    background: linear-gradient(to right, transparent, rgba(196, 168, 130, 0.06));
+    pointer-events: none;
+  }
+
+  /* ── Content (sibling of panel, floats above it) ─────────── */
+  .hero-inner {
+    position: relative;
+    height: 100%;
+    z-index: 2;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 6.5rem 3.5rem 7rem;
+    display: flex;
     align-items: center;
-    padding-top: 5.5rem;
-    padding-bottom: 3rem;
   }
 
-  @media (min-width: 1024px) {
-    .hero-split {
-      grid-template-columns: 1fr 500px;
-      min-height: 82vh;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
+  @media (min-width: 768px) {
+    .hero-inner { padding: 6rem 3.5rem 8rem; }
   }
 
-  /* Text column */
-  @media (min-width: 1024px) {
-    .hero-text {
-      padding-right: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
+  .hero-content {
+    max-width: 52%;
+    width: 100%;
+    animation: hero-fade-in 1s ease-out 0.3s both;
   }
 
-  /* Mobile: centre the text stack */
-  @media (max-width: 1023px) {
-    .hero-text {
-      text-align: center;
-    }
-    .sub-head {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .ctas {
-      justify-content: center;
-    }
+  @keyframes hero-fade-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* 1. Byline */
-  .byline {
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content { animation: none; }
+  }
+
+  /* ── Pill ────────────────────────────────────────────────── */
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.95rem 0.45rem 0.85rem;
+    background-color: rgba(122, 171, 126, 0.14);
+    border: 1px solid rgba(122, 171, 126, 0.28);
+    border-radius: 9999px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #C4A882;
-    margin: 0 0 1.75rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    color: rgba(122, 171, 126, 0.95);
+    margin: 0 0 1.75rem;
   }
 
-  /* 2. Display heading */
+  .hero-pill-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #7AAB7E;
+    box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.7);
+    animation: hero-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hero-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.55); }
+    50%      { box-shadow: 0 0 0 6px rgba(122, 171, 126, 0.0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-pill-dot { animation: none; }
+  }
+
+  /* ── Heading ─────────────────────────────────────────────── */
   .display-heading {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(76px, 9.5vw, 126px);
+    font-size: clamp(3.5rem, 5.5vw, 5.25rem);
     font-variation-settings: 'opsz' 144, 'wght' 700;
-    line-height: 0.92;
-    color: #F7F4EE;
-    letter-spacing: -0.025em;
-    margin: 0 0 1.875rem 0;
+    line-height: 0.9;
+    color: #F5F0E8;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
   }
 
   .display-accent {
     display: block;
     font-style: italic;
-    font-variation-settings: 'opsz' 144, 'wght' 300;
+    font-variation-settings: 'opsz' 144, 'wght' 300, 'SOFT' 50;
     color: #C4A882;
+    margin-top: 0.08em;
   }
 
-  /* 3. Sub-heading */
+  /* ── Green rule (handcrafted accent) ─────────────────────── */
+  .hero-rule {
+    width: 2.25rem;
+    height: 2px;
+    background: #4A7C59;
+    border-radius: 1px;
+    margin: 0 0 1.25rem;
+  }
+
+  /* ── Sub-text ────────────────────────────────────────────── */
   .sub-head {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: rgba(247, 244, 238, 0.65);
-    max-width: 44ch;
-    margin: 0 0 2.75rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgba(245, 240, 232, 0.72);
+    max-width: 28rem;
+    margin: 0 0 2.25rem;
+    text-wrap: pretty;
   }
 
-  /* 4. CTAs */
+  /* ── CTAs ────────────────────────────────────────────────── */
   .ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.875rem;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
   }
 
   .cta-fill {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.9rem 1.875rem;
-    background-color: #3D6B41;
-    color: #F7F4EE;
+    padding: 0.95rem 1.75rem;
+    background-color: #4A7C59;
+    color: #F5F0E8;
     border-radius: 9999px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.01em;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 18px rgba(74, 124, 89, 0.38);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .cta-fill:hover { background-color: #253325; }
+
+  .cta-fill:hover {
+    background-color: #3A5E48;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(74, 124, 89, 0.45);
+  }
+
+  .cta-fill:hover .cta-arrow { transform: translateX(3px); }
+  .cta-fill:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 18px rgba(74, 124, 89, 0.38);
+  }
+
+  .cta-arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s ease;
+  }
 
   .cta-outline {
     display: inline-flex;
     align-items: center;
-    padding: 0.9rem 1.875rem;
-    border: 1.5px solid rgba(247, 244, 238, 0.28);
-    color: #F7F4EE;
+    padding: 0.95rem 1.75rem;
+    border: 1.5px solid rgba(245, 240, 232, 0.4);
+    color: #F5F0E8;
     border-radius: 9999px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     transition: border-color 0.2s ease, background-color 0.2s ease;
   }
+
   .cta-outline:hover {
-    border-color: rgba(247, 244, 238, 0.55);
-    background-color: rgba(247, 244, 238, 0.07);
+    border-color: rgba(245, 240, 232, 0.75);
+    background-color: rgba(245, 240, 232, 0.08);
   }
 
-  /* Drum ring column */
-  .ring-col {
-    display: none;
+  /* ── Attribution ─────────────────────────────────────────── */
+  .hero-attribution {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.775rem;
+    color: rgba(245, 240, 232, 0.42);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-attribution-name {
+    color: rgba(245, 240, 232, 0.82);
+    font-weight: 600;
+  }
+
+  .hero-attribution-sep {
+    margin: 0 0.5rem;
+    color: rgba(245, 240, 232, 0.25);
+  }
+
+  .hero-attribution-loc { white-space: nowrap; }
+
+  /* ── Scroll cue ──────────────────────────────────────────── */
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.75rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(245, 240, 232, 0.6);
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    z-index: 3;
+    animation: hero-fade-in 1s ease-out 1.2s both;
+  }
+
+  .hero-scroll:hover { color: #F5F0E8; }
+
+  .hero-scroll-chevron {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 1;
+    animation: hero-bob 2.2s ease-in-out infinite;
   }
+
+  .hero-scroll-chevron svg { width: 100%; height: 100%; }
+
+  @keyframes hero-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-chevron { animation: none; }
+  }
+
+  /* ── Mobile (< 768px) ────────────────────────────────────── */
+  @media (max-width: 767px) {
+    .hero {
+      height: auto;
+      min-height: 0;
+    }
+
+    /* Photo becomes a fixed-height strip in document flow */
+    .hero-photo {
+      position: relative;
+      inset: auto;
+      height: 45svh;
+      min-height: 220px;
+      animation: none;
+      transform: none;
+    }
+
+    /* Override overlays: keep amber tint, add charcoal bottom-fade to bleed into text block */
+    .hero-photo::before {
+      background: linear-gradient(
+        140deg,
+        rgba(196, 168, 130, 0.35) 0%,
+        rgba(196, 168, 130, 0.1) 50%,
+        transparent 100%
+      );
+    }
+
+    .hero-photo::after {
+      background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        #2E3141 100%
+      );
+    }
+
+    /* Panel not needed — full-width charcoal comes from hero-inner */
+    .hero-panel { display: none; }
+
+    .hero-inner {
+      position: relative;
+      height: auto;
+      background: #2E3141;
+      padding: 2.5rem 1.25rem 3rem;
+      align-items: flex-start;
+      max-width: 100%;
+    }
+
+    .hero-content { max-width: 100%; }
+
+    .sub-head { font-size: 1rem; }
+
+    .ctas { gap: 0.625rem; }
+
+    .cta-fill,
+    .cta-outline {
+      padding: 0.85rem 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    /* Not meaningful in stacked layout */
+    .hero-scroll { display: none; }
+  }
+
+  /* ── Meet Chewy ─────────────────────────────────────────── */
+  .meet-section {
+    padding: 5rem 0;
+  }
+
   @media (min-width: 1024px) {
-    .ring-col {
-      display: flex;
+    .meet-section { padding: 7rem 0; }
+  }
+
+  .meet-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .meet-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
     }
   }
 
-  /* Drum ring SVG */
-  .drum-ring {
-    width: 500px;
-    height: 500px;
-    flex-shrink: 0;
-    transform-box: fill-box;
-    transform-origin: center;
+  .meet-img {
+    width: 100%;
+    border-radius: 1.25rem;
+    object-fit: cover;
+    object-position: center top;
+    aspect-ratio: 4 / 5;
+    display: block;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .drum-ring {
-      animation: drum-spin 80s linear infinite;
+  @media (max-width: 1023px) {
+    .meet-img {
+      aspect-ratio: 3 / 2;
+      object-position: center center;
     }
   }
 
-  @keyframes drum-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+  .meet-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+    margin: 0 0 0.875rem;
   }
 
-  /* Video section */
-  .video-section {
-    position: relative;
-    z-index: 1;
+  .meet-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-variation-settings: 'opsz' 144, 'wght' 600;
+    color: var(--color-charcoal);
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
   }
 
+  .meet-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: inherit;
+    margin: 0 0 1rem;
+  }
+
+  .meet-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-forest);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .meet-link:hover { color: var(--color-sage-dark); }
+
+  /* ── Video ───────────────────────────────────────────────── */
   .video-label-row {
     display: flex;
     align-items: center;
@@ -559,7 +840,7 @@ If you would like something different from what you see here such as a tailor ma
     height: 1px;
     flex: 1;
     max-width: 6rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-linen);
   }
 
   .video-label {
@@ -568,8 +849,24 @@ If you would like something different from what you see here such as a tailor ma
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(247, 244, 238, 0.38);
+    color: var(--color-stone);
     white-space: nowrap;
     margin: 0;
   }
 </style>
+
+<script>
+  // Homepage only: keep nav transparent until scrolled 80px into the page,
+  // overriding the default 20px threshold set in Header.astro. Because page
+  // scripts run after layout scripts, this listener fires second on each
+  // scroll event and reliably wins the classList.toggle race.
+  const header = document.getElementById('site-header');
+  if (header) {
+    const setNavState = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 80);
+    };
+    window.addEventListener('scroll', setNavState, { passive: true });
+    setNavState(); // correct state on initial load / page restore
+  }
+</script>
+
