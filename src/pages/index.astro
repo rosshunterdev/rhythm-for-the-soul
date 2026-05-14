@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
-import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 import SpotifyEmbed from '../components/SpotifyEmbed.astro';
 import ContactForm from '../components/ContactForm.astro';
 
@@ -79,10 +78,7 @@ const testimonials = [
     <div class="hero-inner">
       <div class="hero-content">
 
-        <p class="hero-pill">
-          <span class="hero-pill-dot" aria-hidden="true"></span>
-          Booking now — Auckland &amp; North Shore
-        </p>
+        <p class="hero-location">Auckland &amp; North Shore</p>
 
         <h1 class="display-heading">
           Rhythm
@@ -99,9 +95,6 @@ const testimonials = [
         <div class="ctas">
           <a href="/drumbeat" class="cta-fill">
             Explore Programmes
-            <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
           </a>
           <a href="/contact" class="cta-outline">Get in Touch</a>
         </div>
@@ -115,16 +108,89 @@ const testimonials = [
       </div>
     </div>
 
-    <a href="#meet-chewy" class="hero-scroll" aria-label="Scroll to meet Chewy">
-      <span class="hero-scroll-label">Meet Chewy</span>
-      <span class="hero-scroll-chevron" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
-        </svg>
-      </span>
-    </a>
-
   </section>
+
+  <!-- ── In action ──────────────────────────────────────── -->
+  <section class="video-reel" aria-label="Watch us in action">
+    <svg
+      class="orbital"
+      viewBox="0 0 400 400"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- Rings: radii 60, 100, 145, 190 -->
+      <circle cx="200" cy="200" r="60"  fill="none" stroke="#C4A882" stroke-width="1.2"/>
+      <circle cx="200" cy="200" r="100" fill="none" stroke="#C4A882" stroke-width="1.2"/>
+      <circle cx="200" cy="200" r="145" fill="none" stroke="#C4A882" stroke-width="1.5"/>
+      <circle cx="200" cy="200" r="190" fill="none" stroke="#C4A882" stroke-width="2.5"/>
+
+      <!-- Center dot -->
+      <circle cx="200" cy="200" r="7" fill="#C4A882"/>
+
+      <!-- Ring 1 dots (r=60): θ=-90°, θ=30° -->
+      <circle cx="200" cy="140" r="4.5" fill="#C4A882"/>
+      <circle cx="252" cy="230" r="4"   fill="#C4A882"/>
+
+      <!-- Ring 2 dots (r=100): θ=-90°, θ=150°, θ=45° -->
+      <circle cx="200" cy="100" r="5"   fill="#C4A882"/>
+      <circle cx="113" cy="250" r="4.5" fill="#C4A882"/>
+      <circle cx="271" cy="271" r="4"   fill="#C4A882"/>
+
+      <!-- Ring 3 dots (r=145): θ=-60°, θ=10°, θ=120°, θ=190° -->
+      <circle cx="273" cy="74"  r="5"   fill="#C4A882"/>
+      <circle cx="343" cy="225" r="4.5" fill="#C4A882"/>
+      <circle cx="128" cy="326" r="4.5" fill="#C4A882"/>
+      <circle cx="57"  cy="175" r="4"   fill="#C4A882"/>
+
+      <!-- Ring 4 dots (r=190): 8 evenly spaced at 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315° -->
+      <circle cx="390" cy="200" r="5.5" fill="#C4A882"/>
+      <circle cx="334" cy="334" r="5"   fill="#C4A882"/>
+      <circle cx="200" cy="390" r="5.5" fill="#C4A882"/>
+      <circle cx="66"  cy="334" r="5"   fill="#C4A882"/>
+      <circle cx="10"  cy="200" r="5.5" fill="#C4A882"/>
+      <circle cx="66"  cy="66"  r="5"   fill="#C4A882"/>
+      <circle cx="200" cy="10"  r="5.5" fill="#C4A882"/>
+      <circle cx="334" cy="66"  r="5"   fill="#C4A882"/>
+    </svg>
+    <div class="video-reel-inner">
+      <div class="video-reel-intro reveal">
+        <p class="video-reel-eyebrow">Watch</p>
+        <h2 class="video-reel-heading">Rhythm in action</h2>
+        <p class="video-reel-sub">See how Chewy's sessions bring people together through the power of percussion.</p>
+      </div>
+      <div class="video-reel-wrap reveal reveal-delay-1">
+        <video
+          class="video-reel-player"
+          src="/RFTS%20music%20video.mp4"
+          poster="/images/video-screenshot.png"
+          controls
+          preload="metadata"
+          playsinline
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div><!-- /.video-reel-wrap -->
+
+      <figure class="video-quote reveal reveal-delay-2">
+        <blockquote class="video-quote-text">
+          &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&rdquo;
+        </blockquote>
+        <figcaption class="video-quote-attr">
+          Lorem Ipsum &middot; Placeholder, Organisation Name
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── Logo strip ───────────────────────────────────────── -->
+  <div class="logo-strip">
+    <img
+      src="/logo.png"
+      alt="Rhythm For The Soul — learning through music"
+      class="logo-strip-img"
+    />
+  </div>
 
   <!-- ── Meet Chewy ─────────────────────────────────────── -->
   <section class="meet-section">
@@ -152,22 +218,6 @@ const testimonials = [
       </div>
     </div>
   </section>
-
-  <!-- ── In action ──────────────────────────────────────── -->
-  <div class="video-section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-    <div class="video-label-row reveal">
-      <span class="video-divider"></span>
-      <p class="video-label">See us in action</p>
-      <span class="video-divider"></span>
-    </div>
-    <div class="reveal reveal-delay-1">
-      <YouTubeEmbed
-        videoId="dQw4w9WgXcQ"
-        title="Rhythm for the Soul — watch a drumming session with Chewy"
-        caption="Placeholder video — Chewy's own footage coming soon"
-      />
-    </div>
-  </div>
 
   <!-- ── Audience doors ─────────────────────────────────── -->
   <section class="py-20 lg:py-28 bg-sage-light">
@@ -401,7 +451,7 @@ const testimonials = [
     .hero-photo { animation: none; transform: scaleX(-1) scale(1.0); }
   }
 
-  /* Amber/clay overlay — ties photo's golden light to brand palette */
+  /* Amber/clay overlay */
   .hero-photo::before {
     content: '';
     position: absolute; inset: 0;
@@ -428,13 +478,12 @@ const testimonials = [
   .hero-panel {
     position: absolute;
     top: 0; left: 0; bottom: 0;
-    width: 50%;
+    width: 30%;
     background: #2E3141;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
     z-index: 1;
   }
 
-  /* Noise texture — stops panel feeling flat */
+  /* Noise texture */
   .hero-panel::before {
     content: '';
     position: absolute; inset: 0;
@@ -442,34 +491,36 @@ const testimonials = [
     pointer-events: none;
   }
 
-  /* Diagonal edge softener — amber glow blurs the parallelogram cut */
+  /* Soft right-edge fade — eases the hard vertical cut */
   .hero-panel::after {
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0;
-    width: 20%;
-    background: linear-gradient(to right, transparent, rgba(196, 168, 130, 0.06));
+    width: 25%;
+    background: linear-gradient(to right, transparent, rgba(46, 49, 65, 0.85));
     pointer-events: none;
   }
 
   /* ── Content (sibling of panel, floats above it) ─────────── */
+  /* max-width: 30% matches the panel width so justify-content: flex-end
+     pushes the content block to the right edge of the charcoal panel */
   .hero-inner {
     position: relative;
     height: 100%;
+    max-width: 30%;
     z-index: 2;
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 6.5rem 3.5rem 7rem;
+    padding: 6.5rem 2rem 7rem 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   @media (min-width: 768px) {
-    .hero-inner { padding: 6rem 3.5rem 8rem; }
+    .hero-inner { padding: 6rem 2.5rem 8rem 2rem; }
   }
 
   .hero-content {
-    max-width: 46%;
+    max-width: 22rem;
     width: 100%;
     animation: hero-fade-in 1s ease-out 0.3s both;
   }
@@ -483,39 +534,15 @@ const testimonials = [
     .hero-content { animation: none; }
   }
 
-  /* ── Pill ────────────────────────────────────────────────── */
-  .hero-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.45rem 0.95rem 0.45rem 0.85rem;
-    background-color: rgba(122, 171, 126, 0.14);
-    border: 1px solid rgba(122, 171, 126, 0.28);
-    border-radius: 9999px;
+  /* ── Location label ──────────────────────────────────────── */
+  .hero-location {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.015em;
-    color: rgba(122, 171, 126, 0.95);
-    margin: 0 0 1.75rem;
-  }
-
-  .hero-pill-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 9999px;
-    background-color: #7AAB7E;
-    box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.7);
-    animation: hero-pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes hero-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(122, 171, 126, 0.55); }
-    50%      { box-shadow: 0 0 0 6px rgba(122, 171, 126, 0.0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-pill-dot { animation: none; }
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.45);
+    margin: 0 0 1.5rem;
   }
 
   /* ── Heading ─────────────────────────────────────────────── */
@@ -641,50 +668,6 @@ const testimonials = [
 
   .hero-attribution-loc { white-space: nowrap; }
 
-  /* ── Scroll cue ──────────────────────────────────────────── */
-  .hero-scroll {
-    position: absolute;
-    left: 50%;
-    bottom: 1.75rem;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(245, 240, 232, 0.6);
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-    z-index: 3;
-    animation: hero-fade-in 1s ease-out 1.2s both;
-  }
-
-  .hero-scroll:hover { color: #F5F0E8; }
-
-  .hero-scroll-chevron {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    animation: hero-bob 2.2s ease-in-out infinite;
-  }
-
-  .hero-scroll-chevron svg { width: 100%; height: 100%; }
-
-  @keyframes hero-bob {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(4px); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-scroll-chevron { animation: none; }
-  }
-
   /* ── Mobile (< 768px) ────────────────────────────────────── */
   @media (max-width: 767px) {
     .hero {
@@ -692,24 +675,12 @@ const testimonials = [
       min-height: 0;
     }
 
-    /* Photo becomes a fixed-height strip in document flow */
     .hero-photo {
       position: relative;
       inset: auto;
       height: 45svh;
       min-height: 220px;
       animation: none;
-      transform: none;
-    }
-
-    /* Override overlays: keep amber tint, add charcoal bottom-fade to bleed into text block */
-    .hero-photo::before {
-      background: linear-gradient(
-        140deg,
-        rgba(196, 168, 130, 0.35) 0%,
-        rgba(196, 168, 130, 0.1) 50%,
-        transparent 100%
-      );
     }
 
     .hero-photo::after {
@@ -720,16 +691,16 @@ const testimonials = [
       );
     }
 
-    /* Panel not needed — full-width charcoal comes from hero-inner */
     .hero-panel { display: none; }
 
     .hero-inner {
       position: relative;
       height: auto;
+      max-width: 100%;
       background: #2E3141;
       padding: 2.5rem 1.25rem 3rem;
       align-items: flex-start;
-      max-width: 100%;
+      justify-content: flex-start;
     }
 
     .hero-content { max-width: 100%; }
@@ -743,9 +714,22 @@ const testimonials = [
       padding: 0.85rem 1.5rem;
       font-size: 0.875rem;
     }
+  }
 
-    /* Not meaningful in stacked layout */
-    .hero-scroll { display: none; }
+  /* ── Logo strip ─────────────────────────────────────────── */
+  .logo-strip {
+    background: #2E3141;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 3.5rem 4rem;
+  }
+
+  .logo-strip-img {
+    max-width: 520px;
+    width: 100%;
+    mix-blend-mode: screen;
+    filter: contrast(2);
   }
 
   /* ── Meet Chewy ─────────────────────────────────────────── */
@@ -827,32 +811,142 @@ const testimonials = [
   }
   .meet-link:hover { color: var(--color-sage-dark); }
 
-  /* ── Video ───────────────────────────────────────────────── */
-  .video-label-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 1.25rem;
+  /* ── Video reel ─────────────────────────────────────────── */
+  .video-reel {
+    background: #2E3141;
+    padding: 5rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
   }
 
-  .video-divider {
-    display: block;
-    height: 1px;
-    flex: 1;
-    max-width: 6rem;
-    background-color: var(--color-linen);
+  .video-reel-inner {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
   }
 
-  .video-label {
+  @media (min-width: 640px) {
+    .video-reel-inner { padding: 0 1.5rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .video-reel-inner { padding: 0 2rem; }
+  }
+
+  .orbital {
+    position: absolute;
+    top: -160px;
+    left: -80px;
+    width: 440px;
+    height: 440px;
+    opacity: 0.32;
+    z-index: 0;
+    pointer-events: none;
+    /* transform set by rAF script — no CSS animation */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbital { display: none; }
+  }
+
+  .video-reel-intro {
+    text-align: center;
+    margin-bottom: 2.75rem;
+  }
+
+  .video-reel-eyebrow {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.625rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-stone);
-    white-space: nowrap;
+    color: var(--color-sage);
+    margin: 0 0 0.875rem;
+  }
+
+  .video-reel-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-variation-settings: 'opsz' 144, 'wght' 600;
+    color: var(--color-cream);
+    line-height: 1.1;
+    margin: 0 0 0.875rem;
+  }
+
+  .video-reel-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: rgba(245, 240, 232, 0.52);
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+
+  .video-reel-wrap {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(196, 168, 130, 0.18),
+      0 0 120px 40px rgba(196, 168, 130, 0.09),
+      0 24px 80px rgba(0, 0, 0, 0.50),
+      0 6px 24px rgba(0, 0, 0, 0.30);
+  }
+
+  .video-reel-player {
+    width: 100%;
+    display: block;
+    background: #1a1c25;
+  }
+
+  @media (max-width: 639px) {
+    .video-reel { padding: 3.5rem 0 4rem; }
+    .video-reel-intro { margin-bottom: 2rem; }
+    .video-reel-wrap { border-radius: 0.75rem; }
+  }
+
+  /* ── Pull-quote ─────────────────────────────────────────── */
+  .video-quote {
+    position: relative;
+    margin: 2.5rem auto 0;
+    padding: 2rem 1rem 0;
+    text-align: center;
+    max-width: 40rem;
+  }
+
+  .video-quote::before {
+    content: '\201C';
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 8rem;
+    line-height: 1;
+    color: rgba(196, 168, 130, 0.08);
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .video-quote-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    font-style: italic;
+    font-variation-settings: 'opsz' 72, 'wght' 400;
+    color: #C4A882;
+    line-height: 1.4;
     margin: 0;
+  }
+
+  .video-quote-attr {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.45);
+    margin-top: 0.75rem;
+    letter-spacing: 0.02em;
   }
 </style>
 
@@ -869,5 +963,58 @@ const testimonials = [
     window.addEventListener('scroll', setNavState, { passive: true });
     setNavState(); // correct state on initial load / page restore
   }
+
+  // Orbital: rAF-driven bidirectional spin
+  // scroll down → clockwise, scroll up → counterclockwise, idle → slow clockwise
+  ;(function () {
+    const orbital = document.querySelector('.orbital');
+    if (!orbital || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const BASE_VEL  = 0.04;   // deg/frame at idle (~80s per rotation at 60fps)
+    const MAX_VEL   = 8;      // deg/frame cap at peak scroll speed
+    const LERP      = 0.06;   // easing factor toward target velocity
+
+    let angle          = 0;
+    let currentVel     = BASE_VEL;
+    let targetVel      = BASE_VEL;
+    let lastScrollY    = window.scrollY;
+    let lastScrollTime = performance.now();
+    let resetTimer     = null;
+
+    let rafId;
+    function tick() {
+      currentVel += (targetVel - currentVel) * LERP;
+      angle = ((angle + currentVel) % 360 + 360) % 360;
+      orbital.style.transform = `rotate(${angle}deg)`;
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        rafId = undefined;
+      } else if (!rafId) {
+        rafId = requestAnimationFrame(tick);
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      const now  = performance.now();
+      const dt   = now - lastScrollTime || 1;
+      const dy   = window.scrollY - lastScrollY;          // signed: + down, - up
+      if (dy === 0) return;
+      const dir  = dy >= 0 ? 1 : -1;
+      const mag  = Math.abs(dy) / dt;                     // px/ms magnitude
+
+      targetVel = dir * Math.min(MAX_VEL, BASE_VEL + mag * 4);  // 4 = scale px/ms → deg/frame
+
+      lastScrollY    = window.scrollY;
+      lastScrollTime = now;
+
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => { targetVel = BASE_VEL; }, 600);
+    }, { passive: true });
+  })();
 </script>
 
