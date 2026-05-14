@@ -426,6 +426,7 @@ const testimonials = [
     height: 100svh;
     min-height: 600px;
     overflow: hidden;
+    z-index: 1;
     isolation: isolate;
   }
 
@@ -817,7 +818,6 @@ const testimonials = [
     padding: 5rem 0 6rem;
     position: relative;
     overflow: hidden;
-    isolation: isolate;
   }
 
   .video-reel-inner {
@@ -838,7 +838,7 @@ const testimonials = [
 
   .orbital {
     position: absolute;
-    top: -160px;
+    top: 40px;
     left: -80px;
     width: 440px;
     height: 440px;
@@ -967,32 +967,32 @@ const testimonials = [
   // Orbital: rAF-driven bidirectional spin
   // scroll down → clockwise, scroll up → counterclockwise, idle → slow clockwise
   ;(function () {
-    const orbital = document.querySelector('.orbital');
+    const orbital = document.querySelector('.orbital') as HTMLElement | null;
     if (!orbital || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const BASE_VEL  = 0.04;   // deg/frame at idle (~80s per rotation at 60fps)
-    const MAX_VEL   = 8;      // deg/frame cap at peak scroll speed
-    const LERP      = 0.06;   // easing factor toward target velocity
+    const MAX_VEL   = 2;      // deg/frame cap at peak scroll speed
+    const LERP      = 0.025;  // easing factor — lower = heavier, more resistant feel
 
     let angle          = 0;
     let currentVel     = BASE_VEL;
     let targetVel      = BASE_VEL;
     let lastScrollY    = window.scrollY;
     let lastScrollTime = performance.now();
-    let resetTimer     = null;
+    let resetTimer: ReturnType<typeof setTimeout> | undefined;
 
-    let rafId;
+    let rafId: number | undefined;
     function tick() {
       currentVel += (targetVel - currentVel) * LERP;
       angle = ((angle + currentVel) % 360 + 360) % 360;
-      orbital.style.transform = `rotate(${angle}deg)`;
+      orbital!.style.transform = `rotate(${angle}deg)`;
       rafId = requestAnimationFrame(tick);
     }
     rafId = requestAnimationFrame(tick);
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        cancelAnimationFrame(rafId);
+        cancelAnimationFrame(rafId!);
         rafId = undefined;
       } else if (!rafId) {
         rafId = requestAnimationFrame(tick);
@@ -1007,7 +1007,7 @@ const testimonials = [
       const dir  = dy >= 0 ? 1 : -1;
       const mag  = Math.abs(dy) / dt;                     // px/ms magnitude
 
-      targetVel = dir * Math.min(MAX_VEL, BASE_VEL + mag * 4);  // 4 = scale px/ms → deg/frame
+      targetVel = dir * Math.min(MAX_VEL, BASE_VEL + mag * 0.7);  // 0.7 = scale px/ms → deg/frame
 
       lastScrollY    = window.scrollY;
       lastScrollTime = now;
