@@ -1,17 +1,26 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const programmes = [
-  { label: 'DRUMBEAT', href: '/drumbeat', desc: 'Evidence-based youth programme' },
+const community = [
   { label: 'Schools', href: '/schools', desc: 'Primary & intermediate workshops' },
   { label: 'Early Childhood', href: '/early-childhood', desc: 'Sessions for 0–5 year olds' },
   { label: 'Rest Homes', href: '/rest-homes', desc: 'Aged care & residential settings' },
   { label: 'Disability', href: '/disability', desc: 'Inclusive & neurodiverse sessions' },
 ];
 
-const corporateEvents = [
+const eventsEntertainment = [
   { label: 'Corporate', href: '/corporate', desc: 'Team building through rhythm' },
-  { label: 'Events', href: '/events', desc: 'Parties, fire shows & sound journeys' },
+  { label: 'School Holidays', href: '/school-holidays', desc: 'Holiday programme drumming' },
+  { label: 'Birthdays', href: '/birthdays', desc: 'Drum circle parties for all ages' },
+  { label: 'Events', href: '/events', desc: 'Fire shows & live entertainment' },
+];
+
+const wellness = [
+  { label: 'DRUMBEAT', href: '/drumbeat', desc: 'Evidence-based drumming programme' },
+  { label: 'Sound Journeys', href: '/sound-journeys', desc: 'Meditative rhythm experiences' },
+  { label: 'Laughter Yoga', href: '/laughter-yoga', desc: 'Joy through movement & breath' },
+  { label: 'Teacher Training', href: '/teacher-training', desc: 'DRUMBEAT facilitator training' },
+  { label: 'One-on-one Lessons', href: '/one-on-one', desc: 'Private drumming instruction' },
 ];
 
 function isActive(href: string) {
@@ -25,23 +34,24 @@ function isActive(href: string) {
     <!-- Logo — far left -->
     <div class="nav-logo-slot">
       <a href="/" aria-label="Rhythm for the Soul — home">
-        <img src="/logo.png" alt="Rhythm for the Soul" class="logo-img" />
+        <img src="/logo-removebg.png" alt="Rhythm for the Soul" class="logo-img" />
       </a>
     </div>
 
     <!-- Desktop nav — centred -->
     <nav class="nav-desktop" aria-label="Main navigation">
 
-      <!-- Programmes dropdown -->
-      <div class="relative group/prog" data-dropdown>
+
+      <!-- Community dropdown -->
+      <div class="relative group/comm" data-dropdown>
         <button
-          class:list={['nav-link', programmes.some(p => isActive(p.href)) && 'is-active']}
+          class:list={['nav-link', community.some(p => isActive(p.href)) && 'is-active']}
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Programmes
+          Community
           <svg
-            class="chevron group-hover/prog:rotate-180"
+            class="chevron group-hover/comm:rotate-180"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -52,9 +62,9 @@ function isActive(href: string) {
           </svg>
         </button>
 
-        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-10 opacity-0 invisible translate-y-1 group-hover/prog:opacity-100 group-hover/prog:visible group-hover/prog:translate-y-0 transition-all duration-200">
-          <div class="dropdown-card" style="width: 260px">
-            {programmes.map(item => (
+        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-10 opacity-0 invisible translate-y-1 group-hover/comm:opacity-100 group-hover/comm:visible group-hover/comm:translate-y-0 transition-all duration-200">
+          <div class="dropdown-card" style="width: 252px">
+            {community.map(item => (
               <a
                 href={item.href}
                 class:list={['dropdown-link', isActive(item.href) && 'is-active']}
@@ -67,16 +77,16 @@ function isActive(href: string) {
         </div>
       </div>
 
-      <!-- Corporate & Events dropdown -->
-      <div class="relative group/corp" data-dropdown>
+      <!-- Events & Entertainment dropdown -->
+      <div class="relative group/evts" data-dropdown>
         <button
-          class:list={['nav-link', corporateEvents.some(p => isActive(p.href)) && 'is-active']}
+          class:list={['nav-link', eventsEntertainment.some(p => isActive(p.href)) && 'is-active']}
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Corporate &amp; Events
+          Events
           <svg
-            class="chevron group-hover/corp:rotate-180"
+            class="chevron group-hover/evts:rotate-180"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -87,9 +97,44 @@ function isActive(href: string) {
           </svg>
         </button>
 
-        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-10 opacity-0 invisible translate-y-1 group-hover/corp:opacity-100 group-hover/corp:visible group-hover/corp:translate-y-0 transition-all duration-200">
-          <div class="dropdown-card" style="width: 224px">
-            {corporateEvents.map(item => (
+        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-10 opacity-0 invisible translate-y-1 group-hover/evts:opacity-100 group-hover/evts:visible group-hover/evts:translate-y-0 transition-all duration-200">
+          <div class="dropdown-card" style="width: 252px">
+            {eventsEntertainment.map(item => (
+              <a
+                href={item.href}
+                class:list={['dropdown-link', isActive(item.href) && 'is-active']}
+              >
+                <span class="dropdown-label">{item.label}</span>
+                <span class="dropdown-desc">{item.desc}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Wellness dropdown -->
+      <div class="relative group/well" data-dropdown>
+        <button
+          class:list={['nav-link', wellness.some(p => isActive(p.href)) && 'is-active']}
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Wellness
+          <svg
+            class="chevron group-hover/well:rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-10 opacity-0 invisible translate-y-1 group-hover/well:opacity-100 group-hover/well:visible group-hover/well:translate-y-0 transition-all duration-200">
+          <div class="dropdown-card" style="width: 252px">
+            {wellness.map(item => (
               <a
                 href={item.href}
                 class:list={['dropdown-link', isActive(item.href) && 'is-active']}
@@ -400,10 +445,10 @@ function isActive(href: string) {
 
   <!-- Mobile nav links -->
   <nav class="flex-1 overflow-y-auto px-4 sm:px-6 py-8" aria-label="Mobile navigation">
-    <!-- Programmes group -->
-    <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-4">Programmes</p>
+    <!-- Community group -->
+    <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-4">Community</p>
     <ul class="flex flex-col gap-1 mb-8">
-      {programmes.map(item => (
+      {community.map(item => (
         <li>
           <a
             href={item.href}
@@ -420,10 +465,30 @@ function isActive(href: string) {
       ))}
     </ul>
 
-    <!-- Corporate & Events group -->
-    <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-4">Corporate &amp; Events</p>
+    <!-- Events group -->
+    <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-4">Events</p>
     <ul class="flex flex-col gap-1 mb-8">
-      {corporateEvents.map(item => (
+      {eventsEntertainment.map(item => (
+        <li>
+          <a
+            href={item.href}
+            class="flex items-center justify-between py-3 border-b border-white/10 group"
+          >
+            <span class="font-heading text-2xl font-light text-cream/80 group-hover:text-cream transition-colors">
+              {item.label}
+            </span>
+            <svg class="w-5 h-5 text-sage-light opacity-40 group-hover:opacity-100 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Wellness group -->
+    <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-4">Wellness</p>
+    <ul class="flex flex-col gap-1 mb-8">
+      {wellness.map(item => (
         <li>
           <a
             href={item.href}

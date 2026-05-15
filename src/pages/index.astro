@@ -1,63 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
-import SpotifyEmbed from '../components/SpotifyEmbed.astro';
-import ContactForm from '../components/ContactForm.astro';
-
-
-const audienceDoors = [
-  {
-    title: 'For Schools & Educators',
-    description: 'Creative percussion workshops that build teamwork, listening, and cultural connection. Curriculum-linked and available for all year levels.',
-    href: '/schools',
-    eyebrow: 'Education',
-    theme: 'forest' as const,
-  },
-  {
-    title: 'For Rest Homes & Aged Care',
-    description: 'Joyful, gentle drumming sessions that lift mood, spark memories, and build meaningful connections in residential care settings.',
-    href: '/rest-homes',
-    eyebrow: 'Wellbeing',
-    theme: 'sage' as const,
-  },
-  {
-    title: 'For Workplaces & Teams',
-    description: 'High-energy team building through the universal language of rhythm. No experience needed — just a willingness to have fun.',
-    href: '/corporate',
-    eyebrow: 'Corporate',
-    theme: 'charcoal' as const,
-  },
-  {
-    title: 'For Events & Individuals',
-    description: 'Birthday parties, sound journeys, fire shows, laughter yoga, and 1-on-1 sessions — rhythm for every occasion.',
-    href: '/events',
-    eyebrow: 'Events',
-    theme: 'linen' as const,
-  },
-];
-
-const testimonials = [
-  {
-    quote: "Chewy has an extraordinary gift for meeting people where they are. Our students who rarely engage in group activities were drumming together within minutes — it was genuinely moving to watch.",
-    author: "Aroha Tūhoe",
-    role: "Head of Wellbeing",
-    organization: "Northcote College",
-    featured: true,
-  },
-  {
-    quote: "The residents absolutely light up when Chewy arrives. Some of our quieter residents become the most enthusiastic participants — rhythm reaches places that words can't.",
-    author: "Margaret Collins",
-    role: "Activities Coordinator",
-    organization: "Bayswater Rest Home",
-  },
-  {
-    quote: "We've tried lots of team-building activities over the years, but nothing has come close to the energy and genuine laughter that came out of our drumming session. Highly recommend.",
-    author: "David Park",
-    role: "People & Culture Manager",
-    organization: "Auckland tech company",
-  },
-];
 ---
 
 <BaseLayout
@@ -88,8 +30,8 @@ const testimonials = [
         <div class="hero-rule" aria-hidden="true"></div>
 
         <p class="sub-head">
-          Drumming workshops, music therapy, laughter yoga and fire shows — for
-          schools, rest homes, disability services and corporate events.
+          Drumming workshops, music therapy, laughter yoga and fire shows.
+          Serving schools, rest homes, disability services and corporate events.
         </p>
 
         <div class="ctas">
@@ -102,7 +44,7 @@ const testimonials = [
         <p class="hero-attribution">
           Led by <span class="hero-attribution-name">Julian &ldquo;Chewy&rdquo;</span>
           <span class="hero-attribution-sep" aria-hidden="true">·</span>
-          <span class="hero-attribution-loc">10+ years on the North Shore</span>
+          <span class="hero-attribution-loc">X+ years on the North Shore</span>
         </p>
 
       </div>
@@ -157,7 +99,7 @@ const testimonials = [
       <div class="video-reel-intro reveal">
         <p class="video-reel-eyebrow">Watch</p>
         <h2 class="video-reel-heading">Rhythm in action</h2>
-        <p class="video-reel-sub">See how Chewy's sessions bring people together through the power of percussion.</p>
+        <p class="video-reel-sub">[Placeholder: 1-2 sentences describing what viewers will see in the video and why it's worth watching]</p>
       </div>
       <div class="video-reel-wrap reveal reveal-delay-1">
         <video
@@ -183,240 +125,142 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ── Logo strip ───────────────────────────────────────── -->
-  <div class="logo-strip">
-    <img
-      src="/logo.png"
-      alt="Rhythm For The Soul — learning through music"
-      class="logo-strip-img"
-    />
-  </div>
+  <!-- ── About Chewy ────────────────────────────────────── -->
+  <section class="meet-chewy" id="meet-chewy" aria-label="About Julian Chewy">
 
-  <!-- ── Meet Chewy ─────────────────────────────────────── -->
-  <section class="meet-section">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="meet-grid">
+    <!-- Photo column -->
+    <div class="meet-chewy-photo" aria-hidden="true"></div>
 
-        <div class="reveal">
-          <img
-            src="/images/chewy-about.png"
-            alt="Julian 'Chewy' facilitating a drumming session with participants"
-            class="meet-img"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+    <!-- Content column -->
+    <div class="meet-chewy-content">
+      <div class="meet-chewy-inner">
 
-        <div class="reveal reveal-delay-1">
-          <p class="meet-eyebrow">About Chewy</p>
-          <h2 class="meet-heading">Meet Chewy</h2>
-          <p class="meet-body">Julian — known to everyone as Chewy — is a professional drummer, music therapist and community performer based on Auckland's North Shore. With over a decade of experience, he has brought rhythm into schools, rest homes, disability services and boardrooms across the region.</p>
-          <p class="meet-body">His sessions are inclusive by design: no experience needed, no performance pressure. Just the simple, powerful act of making music together.</p>
-          <a href="/about" class="meet-link">More about Chewy</a>
-        </div>
+        <p class="meet-chewy-eyebrow reveal">Meet... (your specialist/facilitator)</p>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Audience doors ─────────────────────────────────── -->
-  <section class="py-20 lg:py-28 bg-sage-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Who it's for</p>
-        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">
-          Rhythm meets everyone where they are
+        <h2 class="meet-chewy-heading reveal reveal-delay-1">
+          Julian
+          <em class="meet-chewy-accent">&ldquo;Chewy&rdquo;</em>
         </h2>
-        <p class="text-charcoal/60 mt-3 max-w-xl mx-auto">
-          From classrooms to boardrooms, rest homes to birthday parties — there's a programme designed for your group.
+
+        <div class="meet-chewy-rule reveal reveal-delay-1" aria-hidden="true"></div>
+
+        <p class="meet-chewy-bio reveal reveal-delay-2">
+          Step into the vibrant world of Chewy, a musical maestro with an insatiable passion for all things sonic, especially the rich tapestry of world music.
         </p>
-      </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-        {audienceDoors.map((card, i) => (
-          <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
-            <ServiceCard {...card} />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+        <ul class="meet-chewy-creds reveal reveal-delay-2" aria-label="Credentials">
+          <li>Music therapist</li>
+          <li>15+ years of experience</LI>
+          <li>Performed in festivals throughout the globe</li>
+        </ul>
 
-  <!-- ── DRUMBEAT feature ───────────────────────────────── -->
-  <section class="py-20 lg:py-28 bg-linen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="reveal">
-          <!-- Decorative drum icon -->
-          <div class="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-forest" fill="none" viewBox="0 0 48 48" stroke="currentColor" stroke-width="1.5">
-              <ellipse cx="24" cy="16" rx="18" ry="8" />
-              <line x1="6" y1="16" x2="6" y2="32"/>
-              <line x1="42" y1="16" x2="42" y2="32"/>
-              <ellipse cx="24" cy="32" rx="18" ry="8" />
-            </svg>
-          </div>
-          <p class="text-xs font-medium text-forest uppercase tracking-widest mb-3">Featured Programme</p>
-          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-4">
-            DRUMBEAT — discovering rhythm, unity & transformation
-          </h2>
-          <p class="text-charcoal/65 leading-relaxed mb-4">
-            DRUMBEAT is an evidence-based group music therapy programme using hand drumming to support young people's social-emotional wellbeing, resilience, and sense of belonging.
-          </p>
-          <p class="text-charcoal/65 leading-relaxed mb-8">
-            Developed for at-risk youth and delivered in school and community settings, it creates a non-judgmental space where every voice — and every beat — counts.
-          </p>
-          <a href="/drumbeat" class="inline-flex items-center gap-2 px-7 py-3.5 bg-forest text-cream rounded-full font-medium text-sm hover:bg-charcoal transition-colors shadow-sm">
-            Discover DRUMBEAT
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Stats / highlights -->
-        <div class="reveal reveal-delay-2 grid grid-cols-2 gap-4">
-          {[
-            { stat: '10+', label: 'Years facilitating' },
-            { stat: '500+', label: 'Sessions delivered' },
-            { stat: '20+', label: 'Instruments used' },
-            { stat: 'NZ-wide', label: 'Reach & impact' },
-          ].map(item => (
-            <div class="rounded-2xl bg-cream border border-linen p-6 text-center">
-              <p class="font-heading text-4xl font-semibold text-forest mb-1">{item.stat}</p>
-              <p class="text-sm text-charcoal/60">{item.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── About teaser ───────────────────────────────────── -->
-  <section class="py-20 lg:py-28 bg-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <!-- Image placeholder -->
-        <div class="reveal order-2 lg:order-1">
-          <div class="rounded-3xl bg-linen aspect-[4/5] flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg class="w-24 h-24 text-sage/30" fill="none" viewBox="0 0 48 48" stroke="currentColor" stroke-width="0.75">
-                <circle cx="24" cy="24" r="22"/>
-                <circle cx="24" cy="24" r="16"/>
-                <circle cx="24" cy="24" r="10"/>
-                <circle cx="24" cy="24" r="4" fill="currentColor"/>
-              </svg>
-            </div>
-            <p class="relative text-stone/50 text-sm text-center px-8">Photo of Chewy<br/><span class="text-xs">Image coming soon</span></p>
-          </div>
-        </div>
-
-        <!-- Text -->
-        <div class="reveal reveal-delay-2 order-1 lg:order-2">
-          <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Meet your facilitator</p>
-          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">
-            Hi, I'm Chewy
-          </h2>
-          <p class="text-charcoal/65 leading-relaxed mb-4">
-            I'm Julian — most people call me Chewy. I'm a drumming facilitator, music therapist, and performer based on Auckland's North Shore, and I believe deeply in the power of rhythm to heal, connect, and transform.
-          </p>
-          <p class="text-charcoal/65 leading-relaxed mb-4">
-            Over the years I've worked with young people in schools, older adults in rest homes, teams in boardrooms, and individuals seeking something that words alone can't offer. The instruments change — djembes, handpans, didgeridoos, native flutes — but the experience of coming together through rhythm is always the same: immediate, joyful, and real.
-          </p>
-          <p class="text-charcoal/65 leading-relaxed mb-8">
-            I work across Auckland's North Shore and surrounds, and I'd love to bring that energy to your group.
-          </p>
-          <a href="/about" class="inline-flex items-center gap-2 text-forest font-medium text-sm hover:text-charcoal transition-colors">
-            Read my full story
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Spotify section ────────────────────────────────── -->
-  <section class="py-16 lg:py-20 bg-navy">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="reveal">
-        <p class="text-xs font-medium text-sage-light uppercase tracking-widest mb-3">Listen</p>
-        <h2 class="font-heading text-2xl lg:text-3xl font-semibold text-cream mb-2">
-          Listen to the rhythm
-        </h2>
-        <p class="text-cream/55 mb-7 max-w-sm mx-auto">
-          Get a feel for the vibe — press play.
-        </p>
-        <SpotifyEmbed />
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Testimonials ───────────────────────────────────── -->
-  <section class="py-20 lg:py-28 bg-sage-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">What people say</p>
-        <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal">
-          Stories of rhythm in action
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {testimonials.map((t, i) => (
-          <div class:list={['reveal', `reveal-delay-${i + 1}`]}>
-            <TestimonialCard {...t} />
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-10 reveal">
-        <a href="/testimonials" class="inline-flex items-center gap-2 text-forest font-medium text-sm hover:text-charcoal transition-colors">
-          Read all testimonials
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+        <a href="/about" class="meet-chewy-cta reveal reveal-delay-3">
+          Read the full story
         </a>
+
       </div>
     </div>
+
   </section>
 
-  <!-- ── Contact CTA ────────────────────────────────────── -->
-  <section class="py-20 lg:py-28 bg-linen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-        <div class="reveal">
-          <p class="text-xs font-medium text-sage-dark uppercase tracking-widest mb-3">Ready to begin?</p>
-          <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-charcoal mb-5">
-            Let's find the right programme for your group
-          </h2>
-          <p class="text-charcoal/65 leading-relaxed mb-6">
-            Whether you know exactly what you need or you're just curious, I'd love to chat. Tell me about your group and I'll come back with ideas tailored to you.
+  <!-- ── DRUMBEAT Feature ───────────────────────────────── -->
+  <section class="drumbeat-feature" aria-label="Featured Programme">
+    <div class="drumbeat-inner">
+      <div class="drumbeat-card reveal">
+
+        <!-- Content (left) — placeholder until featured programme is confirmed -->
+        <div class="drumbeat-content">
+
+          <p class="drumbeat-badge">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+            Programme Spotlight
           </p>
-          <ul class="space-y-3">
-            {[
-              'Free initial consultation',
-              'Tailored to your group size and needs',
-              'Serving Auckland North Shore and surrounds',
-            ].map(item => (
-              <li class="flex items-center gap-3 text-sm text-charcoal/70">
-                <svg class="w-5 h-5 text-sage-dark shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
+
+          <h2 class="drumbeat-heading">To be confirmed</h2>
+          <div class="drumbeat-rule" aria-hidden="true"></div>
+
+          <p class="drumbeat-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+
         </div>
 
-        <div class="reveal reveal-delay-2 bg-cream rounded-3xl p-8 border border-linen shadow-sm">
-          <ContactForm />
-        </div>
+        <!-- Photo (right) -->
+        <div class="drumbeat-photo" aria-hidden="true"></div>
+
       </div>
     </div>
   </section>
 
+  <!-- ── Services ──────────────────────────────────────── -->
+  <section class="services" aria-label="Services by category">
+    <div class="services-inner">
+
+      <div class="services-header reveal">
+        <p class="services-eyebrow">Every stage of life</p>
+        <h2 class="services-heading">
+          Find the right
+          <em class="services-accent">programme for you</em>
+        </h2>
+      </div>
+
+      <div class="services-grid">
+
+        <a href="/schools" class="service-tile reveal reveal-delay-1">
+          <div class="tile-photo-wrap">
+            <div class="tile-photo" style="background-image: url('/images/drum-school-kids.jpg')"></div>
+          </div>
+          <div class="tile-content">
+            <p class="tile-sub">Schools · Early Childhood · Rest Homes · Disability</p>
+            <h3 class="tile-name">Community and Education</h3>
+          </div>
+          <span class="tile-arrow" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="/corporate" class="service-tile reveal reveal-delay-2">
+          <div class="tile-photo-wrap">
+            <div class="tile-photo" style="background-image: url('/images/fire-breathing.png'); background-position: center 30%"></div>
+          </div>
+          <div class="tile-content">
+            <p class="tile-sub">Corporate · School Holidays · Birthdays · Fire Shows</p>
+            <h3 class="tile-name">Events and Entertainment</h3>
+          </div>
+          <span class="tile-arrow" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="/sound-journeys" class="service-tile reveal reveal-delay-3">
+          <div class="tile-photo-wrap">
+            <div class="tile-photo" style="background-image: url('/images/yoga-laugh.jpeg'); background-position: center top"></div>
+          </div>
+          <div class="tile-content">
+            <p class="tile-sub">Sound Journeys · Laughter Yoga</p>
+            <h3 class="tile-name">Wellness and Journeys</h3>
+          </div>
+          <span class="tile-arrow" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="/teacher-training" class="service-tile reveal reveal-delay-1">
+          <div class="tile-photo-wrap">
+            <div class="tile-photo" style="background-image: url('/images/flute.jpg'); background-position: center 20%"></div>
+          </div>
+          <div class="tile-content">
+            <p class="tile-sub">Teacher Training · One-on-one Lessons</p>
+            <h3 class="tile-name">Training and Lessons</h3>
+          </div>
+          <span class="tile-arrow" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -492,7 +336,7 @@ const testimonials = [
     pointer-events: none;
   }
 
-  /* Soft right-edge fade — eases the hard vertical cut */
+  /* Soft right-edge fade to ease the hard vertical cut */
   .hero-panel::after {
     content: '';
     position: absolute;
@@ -717,101 +561,6 @@ const testimonials = [
     }
   }
 
-  /* ── Logo strip ─────────────────────────────────────────── */
-  .logo-strip {
-    background: #2E3141;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 3.5rem 4rem;
-  }
-
-  .logo-strip-img {
-    max-width: 520px;
-    width: 100%;
-    mix-blend-mode: screen;
-    filter: contrast(2);
-  }
-
-  /* ── Meet Chewy ─────────────────────────────────────────── */
-  .meet-section {
-    padding: 5rem 0;
-  }
-
-  @media (min-width: 1024px) {
-    .meet-section { padding: 7rem 0; }
-  }
-
-  .meet-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .meet-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-    }
-  }
-
-  .meet-img {
-    width: 100%;
-    border-radius: 1.25rem;
-    object-fit: cover;
-    object-position: center top;
-    aspect-ratio: 4 / 5;
-    display: block;
-  }
-
-  @media (max-width: 1023px) {
-    .meet-img {
-      aspect-ratio: 3 / 2;
-      object-position: center center;
-    }
-  }
-
-  .meet-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-forest);
-    margin: 0 0 0.875rem;
-  }
-
-  .meet-heading {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-variation-settings: 'opsz' 144, 'wght' 600;
-    color: var(--color-charcoal);
-    line-height: 1.1;
-    margin: 0 0 1.5rem;
-  }
-
-  .meet-body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
-    color: inherit;
-    margin: 0 0 1rem;
-  }
-
-  .meet-link {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 0.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-forest);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .meet-link:hover { color: var(--color-sage-dark); }
-
   /* ── Video reel ─────────────────────────────────────────── */
   .video-reel {
     background: #2E3141;
@@ -845,7 +594,7 @@ const testimonials = [
     opacity: 0.32;
     z-index: 0;
     pointer-events: none;
-    /* transform set by rAF script — no CSS animation */
+    /* transform driven by rAF script, not CSS animation */
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -948,6 +697,576 @@ const testimonials = [
     margin-top: 0.75rem;
     letter-spacing: 0.02em;
   }
+
+  /* ── About Chewy ─────────────────────────────────────── */
+  .meet-chewy {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    min-height: 88vh;
+    position: relative;
+  }
+
+  /* Photo column */
+  .meet-chewy-photo {
+    position: relative;
+    overflow: hidden;
+    background-image: url('/images/chewy-drum.jpg');
+    background-size: cover;
+    background-position: center 12%;
+  }
+
+  /* Radial overlay: lighter over Chewy, darker at edges to absorb the white wall */
+  .meet-chewy-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 58% 72% at 50% 38%,
+      rgba(46, 49, 65, 0.28) 0%,
+      rgba(46, 49, 65, 0.78) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Amber warm tint + right-edge fade into content column */
+  .meet-chewy-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        150deg,
+        rgba(196, 168, 130, 0.32) 0%,
+        rgba(196, 168, 130, 0.06) 65%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 52%,
+        #2E3141 100%
+      );
+    pointer-events: none;
+  }
+
+  /* Content column */
+  .meet-chewy-content {
+    display: flex;
+    align-items: center;
+    padding: 6rem 4rem 6rem 4.5rem;
+  }
+
+  .meet-chewy-inner {
+    max-width: 27rem;
+  }
+
+  .meet-chewy-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+    margin: 0 0 1rem;
+  }
+
+  .meet-chewy-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(3rem, 4.5vw, 4.5rem);
+    font-variation-settings: 'opsz' 144, 'wght' 700;
+    line-height: 0.92;
+    color: #F5F0E8;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
+  }
+
+  .meet-chewy-accent {
+    display: block;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'wght' 300, 'SOFT' 50;
+    color: #C4A882;
+    font-size: 0.88em;
+    margin-top: 0.06em;
+  }
+
+  .meet-chewy-rule {
+    width: 2.25rem;
+    height: 2px;
+    background: #4A7C59;
+    border-radius: 1px;
+    margin: 0 0 1.5rem;
+  }
+
+  .meet-chewy-bio {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.68;
+    color: rgba(245, 240, 232, 0.65);
+    margin: 0 0 2rem;
+  }
+
+  .meet-chewy-creds {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.25rem;
+  }
+
+  .meet-chewy-creds li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.42);
+  }
+
+  .meet-chewy-creds li + li::before {
+    content: '·';
+    padding: 0 0.65em;
+    color: rgba(196, 168, 130, 0.35);
+  }
+
+  .meet-chewy-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(245, 240, 232, 0.68);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, gap 0.2s ease;
+  }
+
+  .meet-chewy-cta:hover { color: #C4A882; gap: 0.75rem; }
+  .meet-chewy-cta:active { color: rgba(196, 168, 130, 0.7); }
+  .meet-chewy-cta:focus-visible {
+    outline: 2px solid #4A7C59;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  .meet-chewy-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .meet-chewy-cta:hover .meet-chewy-arrow { transform: translateX(3px); }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .meet-chewy {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .meet-chewy-photo {
+      height: 62vw;
+      min-height: 280px;
+      background-position: center 8%;
+    }
+
+    /* On mobile use a bottom fade instead of the right-edge fade */
+    .meet-chewy-photo::after {
+      background:
+        linear-gradient(
+          150deg,
+          rgba(196, 168, 130, 0.28) 0%,
+          rgba(196, 168, 130, 0.06) 60%,
+          transparent 100%
+        ),
+        linear-gradient(
+          to bottom,
+          transparent 50%,
+          #2E3141 100%
+        );
+    }
+
+    .meet-chewy-content {
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+
+    .meet-chewy-inner { max-width: 100%; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .meet-chewy-content { padding: 5rem 2.5rem 5rem 3rem; }
+  }
+
+  /* ── DRUMBEAT Feature ─────────────────────────────────── */
+  .drumbeat-feature {
+    padding: 6rem 0 7rem;
+  }
+
+  .drumbeat-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .drumbeat-inner { padding: 0 2rem; }
+  }
+
+  .drumbeat-card {
+    display: grid;
+    grid-template-columns: 56% 44%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    min-height: 28rem;
+    box-shadow:
+      0 0 0 1px rgba(196, 168, 130, 0.15),
+      0 24px 80px rgba(0, 0, 0, 0.36),
+      0 6px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .drumbeat-content {
+    background: #363b4f;
+    padding: 3.5rem 3.5rem 3.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .drumbeat-photo {
+    position: relative;
+    background-image: url('/images/drum-room.jpg');
+    background-size: cover;
+    background-position: center 40%;
+  }
+
+  .drumbeat-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, #363b4f 0%, transparent 55%),
+      linear-gradient(160deg, rgba(46, 49, 65, 0.40) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .drumbeat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7AAB7E;
+    margin: 0 0 1.25rem;
+    padding: 0.3rem 0.875rem 0.3rem 0.625rem;
+    background: rgba(122, 171, 126, 0.12);
+    border: 1px solid rgba(122, 171, 126, 0.25);
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .drumbeat-badge svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .drumbeat-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.75rem, 4.5vw, 4rem);
+    font-variation-settings: 'opsz' 144, 'wght' 700;
+    line-height: 0.9;
+    color: #F5F0E8;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .drumbeat-rule {
+    width: 2.25rem;
+    height: 2px;
+    background: #4A7C59;
+    border-radius: 1px;
+    margin: 0 0 1.5rem;
+  }
+
+  .drumbeat-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.68;
+    color: rgba(245, 240, 232, 0.62);
+    margin: 0 0 2rem;
+    max-width: 26rem;
+  }
+
+  .drumbeat-pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.25rem;
+  }
+
+  .drumbeat-pillars li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(245, 240, 232, 0.50);
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    border-radius: 999px;
+  }
+
+  .drumbeat-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.75rem;
+    background-color: #4A7C59;
+    color: #F5F0E8;
+    border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(74, 124, 89, 0.38);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    width: fit-content;
+  }
+
+  .drumbeat-cta:hover {
+    background-color: #3A5E48;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(74, 124, 89, 0.45);
+  }
+
+  .drumbeat-cta:hover .drumbeat-arrow { transform: translateX(3px); }
+
+  .drumbeat-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 18px rgba(74, 124, 89, 0.38);
+  }
+
+  .drumbeat-cta:focus-visible {
+    outline: 2px solid #4A7C59;
+    outline-offset: 3px;
+  }
+
+  .drumbeat-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  @media (max-width: 767px) {
+    .drumbeat-feature { padding: 4rem 0 5rem; }
+
+    .drumbeat-card {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .drumbeat-photo {
+      min-height: 220px;
+      height: 55vw;
+      order: -1;
+    }
+
+    .drumbeat-photo::before {
+      background:
+        linear-gradient(to bottom, transparent 40%, #363b4f 90%),
+        linear-gradient(160deg, rgba(46, 49, 65, 0.30) 0%, transparent 55%);
+    }
+
+    .drumbeat-content {
+      padding: 2.5rem 1.5rem 3rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .drumbeat-content { padding: 3rem 2.5rem; }
+  }
+
+  /* ── Services ─────────────────────────────────────────── */
+  .services {
+    padding: 6rem 0 7rem;
+  }
+
+  .services-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .services-inner { padding: 0 2rem; }
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+    margin: 0 0 0.875rem;
+  }
+
+  .services-heading {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-variation-settings: 'opsz' 144, 'wght' 600;
+    color: #F5F0E8;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .services-accent {
+    display: block;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'wght' 300, 'SOFT' 50;
+    color: #C4A882;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 639px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .service-tile {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-tile:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 168, 130, 0.30);
+    box-shadow:
+      0 0 0 1px rgba(196, 168, 130, 0.08),
+      0 20px 60px rgba(0, 0, 0, 0.38),
+      0 6px 16px rgba(0, 0, 0, 0.22);
+  }
+
+  .service-tile:focus-visible {
+    outline: 2px solid #4A7C59;
+    outline-offset: 3px;
+  }
+
+  .tile-photo-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .tile-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+    transition: transform 0.55s ease;
+  }
+
+  .service-tile:hover .tile-photo { transform: scale(1.07); }
+
+  .tile-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(46, 49, 65, 0.18) 0%,
+        rgba(46, 49, 65, 0.52) 48%,
+        rgba(46, 49, 65, 0.88) 100%
+      ),
+      linear-gradient(
+        160deg,
+        rgba(196, 168, 130, 0.18) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .tile-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .tile-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(245, 240, 232, 0.50);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .tile-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    font-variation-settings: 'opsz' 72, 'wght' 600;
+    color: #F5F0E8;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .tile-arrow {
+    position: absolute;
+    bottom: 1.75rem;
+    right: 2rem;
+    display: inline-flex;
+    align-items: center;
+    color: #C4A882;
+    opacity: 0.65;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .tile-arrow svg { width: 1.15rem; height: 1.15rem; }
+  .service-tile:hover .tile-arrow { transform: translateX(4px); opacity: 1; }
+
+  @media (max-width: 639px) {
+    .services { padding: 4rem 0 5rem; }
+    .service-tile { aspect-ratio: 3 / 2; }
+    .tile-content { padding: 1.25rem 1.5rem; }
+    .tile-arrow { bottom: 1.25rem; right: 1.5rem; }
+  }
+
+  @media (max-width: 479px) {
+    .service-tile { aspect-ratio: 16 / 10; }
+  }
 </style>
 
 <script>
@@ -965,14 +1284,14 @@ const testimonials = [
   }
 
   // Orbital: rAF-driven bidirectional spin
-  // scroll down → clockwise, scroll up → counterclockwise, idle → slow clockwise
+  // scroll down = clockwise, scroll up = counterclockwise, idle = slow clockwise
   ;(function () {
     const orbital = document.querySelector('.orbital') as HTMLElement | null;
     if (!orbital || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const BASE_VEL  = 0.04;   // deg/frame at idle (~80s per rotation at 60fps)
     const MAX_VEL   = 2;      // deg/frame cap at peak scroll speed
-    const LERP      = 0.025;  // easing factor — lower = heavier, more resistant feel
+    const LERP      = 0.025;  // easing factor: lower = heavier, more resistant feel
 
     let angle          = 0;
     let currentVel     = BASE_VEL;
@@ -1007,7 +1326,7 @@ const testimonials = [
       const dir  = dy >= 0 ? 1 : -1;
       const mag  = Math.abs(dy) / dt;                     // px/ms magnitude
 
-      targetVel = dir * Math.min(MAX_VEL, BASE_VEL + mag * 0.7);  // 0.7 = scale px/ms → deg/frame
+      targetVel = dir * Math.min(MAX_VEL, BASE_VEL + mag * 0.7);  // 0.7 scales px/ms to deg/frame
 
       lastScrollY    = window.scrollY;
       lastScrollTime = now;
